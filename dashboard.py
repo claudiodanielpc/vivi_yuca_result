@@ -101,18 +101,19 @@ st.plotly_chart(fig)
 st.markdown("---")
 
 
-# Suponiendo que df es tu DataFrame con las columnas 'precio' y 'colloc'
-# df = pd.DataFrame(...)
+colloc=df.copy()
+#Eliminar registros con colloc en nan
+colloc=colloc.dropna(subset=['colloc'])
 
 # Agregar una opción "Total" a las opciones de colloc
-unique_colloc = ['Total'] + list(df['colloc'].unique())
+unique_colloc = ['Total'] + list(colloc['colloc'].unique())
 selected_colloc = st.selectbox('Selecciona una categoría', unique_colloc)
 
 # Filtrar los datos basado en la selección
 if selected_colloc == 'Total':
-    filtered_df = df
+    filtered_df = colloc
 else:
-    filtered_df = df[df['colloc'] == selected_colloc]
+    filtered_df = colloc[colloc['colloc'] == selected_colloc]
 
 # Crear el histograma
 fig = px.histogram(filtered_df, x="precio", nbins=20, color_discrete_sequence=['#fca311'])
