@@ -23,9 +23,8 @@ st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size:
 
 
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Algunos datos generales</p>", unsafe_allow_html=True)
-st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>El presente análisis se realizó con base en la información de los portales inmobiliarios de <a href='https://goodlers.com/' target='_blank'>Goodlers</a>, <a href='https://www.inmuebles24.com/' target='_blank'>Inmuebles24</a>, <a href='https://www.lamudi.com.mx/' target='_blank'>Lamudi</a> y <a href='https://www.easybroker.com/mx' target='_blank'>Easybroker</a>.</p>", unsafe_allow_html=True)
 #Length of the dataframe
-st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>La base de datos cuenta con un total de <b>{:,}</b> registros de vivienda nueva en venta.</p>".format(df.shape[0]), unsafe_allow_html=True)
+st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>La base de datos cuenta con un total de <b>{:,}</b> registros de vivienda nueva en venta en el municipio de Mérida, Yucatán.</p>".format(df.shape[0]), unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -41,6 +40,7 @@ folium_static(m)
 
 ##Añadir sidebar
 st.sidebar.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Fuente de datos</p>", unsafe_allow_html=True)
+st.sidebar.write("<p style='font-family: Montserrat;'>Para el presente proyecto, se descargó información de los siguientes portales:</p>", unsafe_allow_html=True)
 #Lamudi
 st.sidebar.markdown(
 f"<div style='text-align:center;font-family:montserrat;'>"
@@ -73,6 +73,15 @@ f"</div>",
 unsafe_allow_html=True)
 
 st.sidebar.write(" ")
+
+#Inmuebles24
+st.sidebar.markdown(
+f"<div style='text-align:center;font-family:montserrat;'>"
+f"<img src='https://surveymonkey-assets.s3.amazonaws.com/survey/297849572/d1726151-bb64-4ee7-a3ab-429aaaf70a07.png' alt='Inmuebles24' width='70'/>"
+#Añadir url para redirigir a la página del INEGI
+f"<p><a href='https://www.inmuebles24.com/'>Inmuebles24</a></p>"
+f"</div>",
+unsafe_allow_html=True)
 
 
 
