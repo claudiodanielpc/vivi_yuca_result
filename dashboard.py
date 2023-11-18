@@ -6,7 +6,6 @@ import polars as pl
 from streamlit_extras.dataframe_explorer import dataframe_explorer
 #from streamlit_pandas_profiling import st_profile_report
 from streamlit.elements import spinner
-import database
 import requests
 from IPython.display import IFrame
 
