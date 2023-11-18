@@ -19,9 +19,9 @@ import database
 # # Invoke the table into a pandas DataFrame
 # df = pd.read_sql_table(table_name, engine)
 
-df = database.load_data()
 
 st.set_page_config(page_title="Resultados vivienda en Mérida", page_icon=":house:")
+df = database.load_data()
 
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 35px; text-align: center'>Portales inmobiliarios y oferta disponible de vivienda nueva en Mérida</p>", unsafe_allow_html=True)
 
