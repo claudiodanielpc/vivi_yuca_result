@@ -99,7 +99,7 @@ st.plotly_chart(fig)
 st.markdown("---")
 
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿Cómo se distribuyen los precios?</p>", unsafe_allow_html=True)
-
+# Agregar una opción "Total" a las opciones de colloc y asegurarse de que la primera letra sea mayúscula
 unique_colloc = ['Total'] + [x.title() for x in list(df['colloc'].unique())]
 selected_colloc = st.selectbox('Selecciona una zona', unique_colloc)
 
@@ -133,5 +133,4 @@ fig.update_layout(
 
 # Mostrar el histograma en la aplicación Streamlit
 st.plotly_chart(fig)
-
 
