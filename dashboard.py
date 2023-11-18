@@ -99,6 +99,7 @@ st.plotly_chart(fig)
 
 
 st.markdown("---")
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿Cómo se distribuyen los precios por zona?</p>", unsafe_allow_html=True)
 
 
 colloc=df.copy()
