@@ -32,3 +32,5 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 35p
 #Histograma de precios utilizando plotly express
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 25px; text-align: center'>Histograma de precios</p>", unsafe_allow_html=True)
 fig = px.histogram(df, x="precio", nbins=100, title='Histograma de precios')
+st.plotly_chart(fig)
+
