@@ -195,14 +195,16 @@ st.markdown("---")
 
 csv = df.to_csv(index=False).encode('utf-8')
 
+
+
 # Header
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Descargar los datos</p>", unsafe_allow_html=True)
 
-# Create columns for layout
+# Create a single column layout for the centered button
 col1, col2, col3 = st.columns([1,2,1])
 
 with col1:
-    st.write("")  # Just to create some space
+    st.write("")  # This is just to create a column as a spacer
 
 with col2:
     # Centered download button
@@ -215,7 +217,7 @@ with col2:
     )
 
 with col3:
-    st.write("")  # Just to create some space
+    st.write("")  # This is just to create a column as a spacer
 
-# Centered GIF below the button
-st.markdown("<div style='text-align: center'><img src='https://raw.githubusercontent.com/tylerjrichards/GPT3-Dataset-Generator-V2/main/Gifs/blue_grey_arrow.gif' width='50'/></div>", unsafe_allow_html=True)
+# Custom HTML for the centered GIF below the button
+st.markdown("<div style='display: flex; justify-content: center;'><img src='https://raw.githubusercontent.com/tylerjrichards/GPT3-Dataset-Generator-V2/main/Gifs/blue_grey_arrow.gif' width='50'/></div>", unsafe_allow_html=True)
