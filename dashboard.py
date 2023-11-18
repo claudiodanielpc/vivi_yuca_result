@@ -7,8 +7,7 @@ from streamlit_extras.dataframe_explorer import dataframe_explorer
 from streamlit.elements import spinner
 import requests
 from IPython.display import IFrame
-from sqlalchemy import create_engine
-import psycopg2
+import database
 
 # username = 'postgres'
 # password = 'olivia14'
@@ -22,8 +21,7 @@ import psycopg2
 # # Invoke the table into a pandas DataFrame
 # df = pd.read_sql_table(table_name, engine)
 
-df=pd.read_csv('vivienda_yucatan.csv')
-
+df = database.load_data()
 
 st.set_page_config(page_title="Resultados vivienda en Mérida", page_icon=":house:")
 
