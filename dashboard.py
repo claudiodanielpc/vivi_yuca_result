@@ -48,7 +48,7 @@ st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size:
 
 # Create the bar chart with Plotly Express
 fig = px.bar(
-    localidad_counts.head(10),
+    localidad_counts.tail(10),
     x='count',
     y='localidad',
     orientation='h',
