@@ -42,18 +42,22 @@ folium_static(m)
 #Gráfica por localidad
 localidad_counts = df['localidad'].value_counts().reset_index()
 localidad_counts.columns = ['localidad', 'count']
+#Obtener porcentaje
+localidad_counts['percent'] = localidad_counts['count'] / localidad_counts['count'].sum() * 100
+#Ordenar y dejar los 20 primeros
+localidad_counts = localidad_counts.sort_values(by='percent', ascending=False).head(20)
 
 # Display the header using Markdown
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿En qué colonias o localidades se concentra la oferta?</p>", unsafe_allow_html=True)
 
 # Create the bar chart with Plotly Express
-fig = px.bar(
-    localidad_counts.tail(10),
-    x='count',
+fig = px.bar(localidad_counts.sort_values(by='percent', ascending=True),
+
+    x='percent',
     y='localidad',
     orientation='h',
     color='localidad',
-    color_discrete_sequence=px.colors.qualitative.Pastel
+    color_continuous_scale='YlOrRd',
 )
 
 # Update the layout of the figure
