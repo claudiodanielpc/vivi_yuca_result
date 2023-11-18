@@ -6,6 +6,7 @@ from streamlit_extras.dataframe_explorer import dataframe_explorer
 from streamlit.elements import spinner
 from IPython.display import IFrame
 import database
+import folium
 
 # username = 'postgres'
 # password = 'olivia14'
@@ -32,3 +33,4 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 35p
 
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>¿Dónde se concentra el rezago habitacional?</p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>El rezago habitacional se localiza principalmente en las entidades del sur, sureste de nuestro país: </p>", unsafe_allow_html=True)
+df_mapa=df.dropna(subset=['lat','lon'])
