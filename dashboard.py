@@ -220,4 +220,4 @@ with col3:
     st.write("")  # This is just to create a column as a spacer
 
 # Custom HTML for the centered GIF below the button
-st.markdown("<div style='display: flex; justify-content: center;'><img src='https://raw.githubusercontent.com/tylerjrichards/GPT3-Dataset-Generator-V2/main/Gifs/blue_grey_arrow.gif' width='50'/></div>", unsafe_allow_html=True)
+st.markdown("<div style='display: flex; justify-content: center;'><img src='https://raw.githubusercontent.com/tylerjrichards/GPT3-Dataset-Generator-V2/main/Gifs/arrow_small_new.gif' width='50'/></div>", unsafe_allow_html=True)
