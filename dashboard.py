@@ -107,7 +107,8 @@ colloc=df.copy()
 colloc=colloc.dropna(subset=['colloc'])
 
 # Agregar una opción "Total" a las opciones de colloc
-unique_colloc = list(df['colloc'].unique())
+unique_colloc = list(colloc['colloc'].unique())
+#Ordenar alfabéticamente
 unique_colloc.sort()
 unique_colloc = ['Total'] + unique_colloc
 selected_colloc = st.selectbox('Selecciona una categoría', unique_colloc)
