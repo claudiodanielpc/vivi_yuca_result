@@ -205,5 +205,5 @@ st.download_button(
 )
 
 #Agregar gif
-st.image('https://github.com/tylerjrichards/GPT3-Dataset-Generator-V2/blob/main/Gifs/blue_grey_arrow.gif',use_column_width=True)
+st.image('https://github.com/tylerjrichards/GPT3-Dataset-Generator-V2/blob/main/Gifs/blue_grey_arrow.gif')
 
