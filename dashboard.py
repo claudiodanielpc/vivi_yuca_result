@@ -40,7 +40,7 @@ folium_static(m)
 
 #Gráfica de barras	
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿En qué colonias o localidades se concentra la oferta?</p>", unsafe_allow_html=True)
-fig = px.bar(df.sort_values(by='count',ascending=False).head(10), x='count', y='colonia', orientation='h',color='colonia',color_discrete_sequence=px.colors.qualitative.Pastel)
+fig = px.bar(df.sort_values(by='count',ascending=False).head(10), x='count', y='localidad', orientation='h',color='localidad',color_discrete_sequence=px.colors.qualitative.Pastel)
 fig.update_layout(showlegend=False)
 st.plotly_chart(fig)
 
