@@ -108,6 +108,8 @@ colloc=colloc.dropna(subset=['colloc'])
 
 # Agregar una opción "Total" a las opciones de colloc
 unique_colloc = ['Total'] + list(colloc['colloc'].unique())
+#Ordenar por orden alfabético
+unique_colloc.sort()
 selected_colloc = st.selectbox('Selecciona una categoría', unique_colloc)
 
 # Filtrar los datos basado en la selección
