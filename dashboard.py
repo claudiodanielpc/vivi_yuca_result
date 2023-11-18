@@ -38,12 +38,17 @@ HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=13).add_to(m)
 folium_static(m)
 
 
+
+#Gráfica por localidad
+localidad_counts = df['localidad'].value_counts().reset_index()
+localidad_counts.columns = ['localidad', 'count']
+
 # Display the header using Markdown
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿En qué colonias o localidades se concentra la oferta?</p>", unsafe_allow_html=True)
 
 # Create the bar chart with Plotly Express
 fig = px.bar(
-    df.sort_values(by='count', ascending=False).head(10),
+    localidad_counts.head(10),
     x='count',
     y='localidad',
     orientation='h',
@@ -54,16 +59,13 @@ fig = px.bar(
 # Update the layout of the figure
 fig.update_layout(
     showlegend=False,
-    yaxis_title=None,  # Remove the y-axis title if needed
-    xaxis_title="Número de Propiedades",  # You can customize the x-axis title
-    yaxis=dict(autorange="reversed")  # This ensures the highest value is at the top
+    yaxis_title=None,  # Removes the y-axis title if desired
+    xaxis_title="Frecuencia",  # Customize the x-axis title to represent frequency
+    yaxis=dict(autorange="reversed")  # Ensures the highest value is at the top
 )
 
 # Render the bar chart in Streamlit
 st.plotly_chart(fig)
-
-
-
 
 
 
