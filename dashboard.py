@@ -18,13 +18,13 @@ df = database.load_data()
 df['colloc'] = df['colloc'].str.title()
 
 
-st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 35px; text-align: center'>Portales inmobiliarios y oferta de vivienda nueva en Mérida</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 35px; text-align: center'>Portales inmobiliarios y oferta para adquisición de vivienda en Mérida</p>", unsafe_allow_html=True)
 
 
 
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Algunos datos generales</p>", unsafe_allow_html=True)
 #Length of the dataframe
-st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>La base de datos cuenta con un total de <b>{:,}</b> registros de vivienda nueva en venta en el municipio de Mérida, Yucatán.</p>".format(df.shape[0]), unsafe_allow_html=True)
+st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>La base de datos cuenta con un total de <b>{:,}</b> registros de vivienda en venta en el municipio de Mérida, Yucatán.</p>".format(df.shape[0]), unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -157,7 +157,7 @@ unique_colloc = list(colloc['colloc'].unique())
 #Ordenar alfabéticamente
 unique_colloc.sort()
 unique_colloc = ['Total'] + unique_colloc
-selected_colloc = st.selectbox('Selecciona una categoría', unique_colloc)
+selected_colloc = st.selectbox('Selecciona una zona', unique_colloc)
 
 # Filtrar los datos basado en la selección
 if selected_colloc == 'Total':
@@ -195,7 +195,7 @@ st.markdown("---")
 
 csv = df.to_csv(index=False).encode('utf-8')
 
-st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Descargar Base de Datos Completa</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Descargar los datos</p>", unsafe_allow_html=True)
 
 st.download_button(
     label="Descargar datos como CSV",
