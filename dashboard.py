@@ -38,5 +38,5 @@ df_mapa=df.dropna(subset=['lat','lon'])
 
 m = folium.Map(location=[21.0000, -89.5000], zoom_start=10,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Google Satellite")
 HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=13).add_to(m)
-folium_static(m)
+m
 
