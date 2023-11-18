@@ -50,7 +50,7 @@ f"<p><a href='https://www.lamudi.com.mx/'>Lamudi</a></p>"
 f"</div>",
 unsafe_allow_html=True)
 
-
+st.sidebar.write(" ")
 
 #Goodlers
 st.sidebar.markdown(
@@ -61,8 +61,24 @@ f"<p><a href='https://goodlers.com/'>Goodlers</a></p>"
 f"</div>",
 unsafe_allow_html=True)
 
+st.sidebar.write(" ")
+
+#Easybroker
+st.sidebar.markdown(
+f"<div style='text-align:center;font-family:montserrat;'>"
+f"<img src=https://www.easybroker.com/brand_files/logo.png' alt='Easybroker' width='70'/>"
+#Añadir url para redirigir a la página del INEGI
+f"<p><a href='https://www.easybroker.com/mx/'>Easybroker</a></p>"
+f"</div>",
+unsafe_allow_html=True)
+
+st.sidebar.write(" ")
 
 
+
+
+
+#Gráfica de registros por colonia
 localidad_counts = df['colloc'].value_counts().reset_index()
 localidad_counts.columns = ['colloc', 'count']
 #Obtener porcentaje
