@@ -71,10 +71,10 @@ fig.update_layout(
     showlegend=False,
     yaxis_title=None,  # Removes the y-axis title if desired
     xaxis_title="Porcentaje",  # Customize the x-axis title to represent frequency
-    yaxis=dict(autorange="reversed"),  # Ensures the highest value is at the top
+ # Ensures the highest value is at the top
  annotations=[
         go.layout.Annotation(
-            text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
+            text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
             xref='paper',
             yref='paper',
             x=0,
