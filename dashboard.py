@@ -65,7 +65,7 @@ fig.update_layout(
     coloraxis_colorbar=dict(
         title="%",
         
-        dtick=1
+        dtick=3
     ))
 
 # Update the layout of the figure
