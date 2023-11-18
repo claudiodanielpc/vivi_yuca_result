@@ -209,7 +209,7 @@ with col1:
 with col2:
     # Centered download button
     st.download_button(
-        label="Descargar datos como CSV",
+        label="Descargar",
         data=csv,
         file_name='base_de_datos_completa.csv',
         mime='text/csv',
