@@ -98,3 +98,28 @@ st.plotly_chart(fig)
 
 st.markdown("---")
 
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿Cómo se distribuyen los precios?</p>", unsafe_allow_html=True)
+#Histograma de precios
+fig = px.histogram(df, x="precio", nbins=20, color_discrete_sequence=['#fca311'])
+fig.update_layout(
+    xaxis_title="Precio",
+    yaxis_title="Frecuencia",
+    annotations=[
+        go.layout.Annotation(
+            text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
+            xref='paper',
+            yref='paper',
+            x=0,
+            y=-0.2,
+            showarrow=False,
+            font=dict(
+                family='Century Gothic',
+                size=12,
+                color='grey'
+            )
+        )
+    ]
+)
+st.plotly_chart(fig)
+
+
