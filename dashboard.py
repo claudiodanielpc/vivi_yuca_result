@@ -8,7 +8,7 @@ from streamlit_extras.dataframe_explorer import dataframe_explorer
 from streamlit.elements import spinner
 import requests
 from IPython.display import IFrame
-from sqlalchemy import engine
+from sqlalchemy import create_engine
 
 username = 'postgres'
 password = 'olivia14'
