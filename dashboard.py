@@ -98,25 +98,22 @@ st.plotly_chart(fig)
 
 st.markdown("---")
 
-options = ['Total'] + sorted(df['colloc'].unique().tolist())
-selection = st.selectbox('Selecciona una categoría', options)
 
-if selection != 'Total':
-    filtro = df[df['colloc'] == selection]
+# Agregar una opción "Total" a las opciones de colloc
+unique_colloc = ['Total'] + list(df['colloc'].unique())
+selected_colloc = st.selectbox('Selecciona una categoría', unique_colloc)
+
+# Filtrar los datos basado en la selección
+if selected_colloc == 'Total':
+    filtered_df = df
 else:
-    filtro = df
-
-# Título personalizado usando markdown
-st.markdown(f"<p style='font-family:Century Gothic;font-weight:bold;font-size:20px;text-align:center'>Histograma de precios para {selection}</p>", unsafe_allow_html=True)
+    filtered_df = df[df['colloc'] == selected_colloc]
 
 # Crear el histograma
-fig = px.histogram(filtro, x="precio", nbins=20, color_discrete_sequence=['#fca311'])
-
-# Actualizar el layout para añadir títulos y anotaciones personalizadas
+fig = px.histogram(filtered_df, x="precio", nbins=20, color_discrete_sequence=['#fca311'])
 fig.update_layout(
     xaxis_title="Precio",
     yaxis_title="Frecuencia",
-    font_family="Century Gothic",
     annotations=[
         go.layout.Annotation(
             text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
@@ -126,7 +123,7 @@ fig.update_layout(
             y=-0.2,
             showarrow=False,
             font=dict(
-                family="Century Gothic",
+                family='Century Gothic',
                 size=12,
                 color='grey'
             )
@@ -134,7 +131,7 @@ fig.update_layout(
     ]
 )
 
-# Mostrar el histograma en la aplicación de Streamlit
+# Mostrar el histograma en la aplicación Streamlit
 st.plotly_chart(fig)
 
 
