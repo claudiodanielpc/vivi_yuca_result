@@ -32,6 +32,7 @@ df_mapa=df.dropna(subset=['lat','lon'])
 
 
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Concentración territorial de la oferta</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Del total de registros, el <b>{:.2f}%</b> se encuentran en la zona norte de la ciudad, el <b>{:.2f}%</b> cuenta con coordenadas para poder identificar su ubicación en el mapa.</p>".format(df_mapa.shape[0]/df.shape[0]*100,df_mapa.shape[0]/df.shape[0]*100), unsafe_allow_html=True)
 m = folium.Map(location=[21.0000, -89.5000], zoom_start=10,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Google Satellite")
 HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=13).add_to(m)
 folium_static(m)
