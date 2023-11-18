@@ -66,7 +66,7 @@ st.sidebar.write(" ")
 #Easybroker
 st.sidebar.markdown(
 f"<div style='text-align:center;font-family:montserrat;'>"
-f"<img src=https://www.easybroker.com/brand_files/logo.png' alt='Easybroker' width='70'/>"
+f"<img src='https://www.easybroker.com/brand_files/logo.png' alt='Easybroker' width='70'/>"
 #Añadir url para redirigir a la página del INEGI
 f"<p><a href='https://www.easybroker.com/mx/'>Easybroker</a></p>"
 f"</div>",
