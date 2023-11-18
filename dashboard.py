@@ -46,6 +46,8 @@ localidad_counts.columns = ['localidad', 'count']
 localidad_counts['percent'] = localidad_counts['count'] / localidad_counts['count'].sum() * 100
 #Ordenar y dejar los 20 primeros
 localidad_counts = localidad_counts.sort_values(by='percent', ascending=False).head(20)
+#Localidades con primera letra en mayúscula
+localidad_counts['localidad'] = localidad_counts['localidad'].str.title()
 
 # Display the header using Markdown
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿En qué colonias o localidades se concentra la oferta?</p>", unsafe_allow_html=True)
