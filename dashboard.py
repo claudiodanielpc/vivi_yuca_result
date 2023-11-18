@@ -145,3 +145,16 @@ fig.update_layout(
 st.plotly_chart(fig)
 
 
+st.markdown("---")  
+
+csv = df.to_csv(index=False).encode('utf-8')
+
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Descargar Base de Datos Completa</p>", unsafe_allow_html=True)
+
+st.download_button(
+    label="Descargar datos como CSV",
+    data=csv,
+    file_name='base_de_datos_completa.csv',
+    mime='text/csv',
+)
+
