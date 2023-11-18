@@ -37,10 +37,14 @@ m = folium.Map(location=[21.0000, -89.5000], zoom_start=10,tiles="http://www.goo
 HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=13).add_to(m)
 folium_static(m)
 
+
+#Gráfica de barras	
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿En qué colonias o localidades se concentra la oferta?</p>", unsafe_allow_html=True)
 fig = px.bar(df.sort_values(by='count',ascending=False).head(10), x='count', y='colonia', orientation='h',color='colonia',color_discrete_sequence=px.colors.qualitative.Pastel)
 fig.update_layout(showlegend=False)
 st.plotly_chart(fig)
+
+
 
 
 
