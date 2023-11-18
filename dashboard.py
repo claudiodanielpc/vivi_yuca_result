@@ -46,7 +46,7 @@ st.sidebar.markdown(
 f"<div style='text-align:center;font-family:montserrat;'>"
 f"<img src='' alt='Lamudi' width='70'/>"
 #Añadir url para redirigir a la página del INEGI
-f"<p><a href='https://www.lamudi.com.mx/journal/wp-content//uploads/2020/02/lamudi-9-marzo.png'>Lamudi</a></p>"
+f"<p><a href='https://www.lamudi.com.mx/journal/wp-content//uploads/2016/03/lamudi-1.jpg'>Lamudi</a></p>"
 f"</div>",
 unsafe_allow_html=True)
 
