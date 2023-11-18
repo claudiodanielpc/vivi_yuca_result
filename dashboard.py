@@ -40,14 +40,14 @@ folium_static(m)
 
 
 #Gráfica por localidad
-localidad_counts = df['localidad'].value_counts().reset_index()
-localidad_counts.columns = ['localidad', 'count']
+localidad_counts = df['colloc'].value_counts().reset_index()
+localidad_counts.columns = ['colloc', 'count']
 #Obtener porcentaje
 localidad_counts['porcentaje'] = localidad_counts['count'] / localidad_counts['count'].sum() * 100
 #Ordenar y dejar los 20 primeros
 localidad_counts = localidad_counts.sort_values(by='porcentaje', ascending=False).head(20)
 #Localidades con primera letra en mayúscula
-localidad_counts['localidad'] = localidad_counts['localidad'].str.title()
+localidad_counts['colloc'] = localidad_counts['colloc'].str.title()
 
 # Display the header using Markdown
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿En qué colonias o localidades se concentra la oferta?</p>", unsafe_allow_html=True)
@@ -56,7 +56,7 @@ st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size:
 fig = px.bar(localidad_counts.sort_values(by='porcentaje', ascending=True),
 
     x='porcentaje',
-    y='localidad',
+    y='colloc',
     orientation='h',
     color='porcentaje',
     color_continuous_scale='YlOrRd',
