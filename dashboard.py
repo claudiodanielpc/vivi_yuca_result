@@ -8,6 +8,7 @@ from streamlit.elements import spinner
 import requests
 from IPython.display import IFrame
 from sqlalchemy import create_engine
+import psycopg2
 
 # username = 'postgres'
 # password = 'olivia14'
