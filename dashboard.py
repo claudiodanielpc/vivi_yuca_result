@@ -61,17 +61,32 @@ fig = px.bar(localidad_counts.sort_values(by='percent', ascending=True),
 )
 fig.update_layout(
     coloraxis_colorbar=dict(
-        title="% rezago habitacional",
+        title="%",
         
-        dtick=10
+        dtick=1
     ))
 
 # Update the layout of the figure
 fig.update_layout(
     showlegend=False,
     yaxis_title=None,  # Removes the y-axis title if desired
-    xaxis_title="Frecuencia",  # Customize the x-axis title to represent frequency
+    xaxis_title="Porcentaje",  # Customize the x-axis title to represent frequency
     yaxis=dict(autorange="reversed")  # Ensures the highest value is at the top
+ annotations=[
+        go.layout.Annotation(
+            text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
+            xref='paper',
+            yref='paper',
+            x=0,
+            y=-0.2,
+            showarrow=False,
+            font=dict(
+                family='Century Gothic',
+                size=12,
+                color='grey'
+            )
+        )
+    ]
 )
 
 # Render the bar chart in Streamlit
