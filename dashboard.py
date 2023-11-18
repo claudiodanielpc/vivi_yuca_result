@@ -98,16 +98,16 @@ st.plotly_chart(fig)
 
 st.markdown("---")
 
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿Cómo se distribuyen los precios?</p>", unsafe_allow_html=True)
 
-# Agregar una opción "Total" a las opciones de colloc
-unique_colloc = ['Total'] + list(df['colloc'].unique())
-selected_colloc = st.selectbox('Selecciona una categoría', unique_colloc)
+unique_colloc = ['Total'] + [x.title() for x in list(df['colloc'].unique())]
+selected_colloc = st.selectbox('Selecciona una zona', unique_colloc)
 
 # Filtrar los datos basado en la selección
 if selected_colloc == 'Total':
     filtered_df = df
 else:
-    filtered_df = df[df['colloc'] == selected_colloc]
+    filtered_df = df[df['colloc'].str.title() == selected_colloc]
 
 # Crear el histograma
 fig = px.histogram(filtered_df, x="precio", nbins=20, color_discrete_sequence=['#fca311'])
