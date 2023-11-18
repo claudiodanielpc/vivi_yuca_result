@@ -56,9 +56,15 @@ fig = px.bar(localidad_counts.sort_values(by='percent', ascending=True),
     x='percent',
     y='localidad',
     orientation='h',
-    color='localidad',
+    color='percent',
     color_continuous_scale='YlOrRd',
 )
+fig.update_layout(
+    coloraxis_colorbar=dict(
+        title="% rezago habitacional",
+        
+        dtick=10
+    ))
 
 # Update the layout of the figure
 fig.update_layout(
