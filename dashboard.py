@@ -52,6 +52,16 @@ unsafe_allow_html=True)
 
 
 
+#Goodlers
+st.sidebar.markdown(
+f"<div style='text-align:center;font-family:montserrat;'>"
+f"<img src='https://goodlers.com/_nuxt/img/fb7d937.png' alt='Goodlers' width='70'/>"
+#Añadir url para redirigir a la página del INEGI
+f"<p><a href='https://goodlers.com/'>Goodlers</a></p>"
+f"</div>",
+unsafe_allow_html=True)
+
+
 
 localidad_counts = df['colloc'].value_counts().reset_index()
 localidad_counts.columns = ['colloc', 'count']
