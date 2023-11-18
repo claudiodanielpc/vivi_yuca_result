@@ -28,7 +28,6 @@ df=pd.read_csv('vivienda_yucatan.csv')
 st.set_page_config(page_title="Resultados vivienda en Mérida", page_icon=":house:")
 
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 35px; text-align: center'>Portales inmobiliarios y oferta disponible de vivienda nueva en Mérida</p>", unsafe_allow_html=True)
-print(df.head())
 
 # #Histograma de precios utilizando plotly express
 # st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 25px; text-align: center'>Histograma de precios</p>", unsafe_allow_html=True)
