@@ -7,6 +7,7 @@ from streamlit.elements import spinner
 from IPython.display import IFrame
 import database
 import folium
+from folium.plugins import HeatMap
 
 # username = 'postgres'
 # password = 'olivia14'
@@ -34,3 +35,8 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 35p
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>¿Dónde se concentra el rezago habitacional?</p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>El rezago habitacional se localiza principalmente en las entidades del sur, sureste de nuestro país: </p>", unsafe_allow_html=True)
 df_mapa=df.dropna(subset=['lat','lon'])
+
+m = folium.Map(location=[21.0000, -89.5000], zoom_start=10,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Google Satellite")
+HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=13).add_to(m)
+folium_static(m)
+
