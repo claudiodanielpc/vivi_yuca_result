@@ -2,7 +2,6 @@ import pandas as pd
 import streamlit as st
 import plotly.graph_objs as go
 import plotly.express as px
-import polars as pl
 from streamlit_extras.dataframe_explorer import dataframe_explorer
 #from streamlit_pandas_profiling import st_profile_report
 from streamlit.elements import spinner
