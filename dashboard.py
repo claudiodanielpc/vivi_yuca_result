@@ -25,8 +25,9 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 #Length of the dataframe
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>La base de datos cuenta con un total de <b>{}</b> registros de vivienda nueva en venta.</p>".format(df.shape[0]), unsafe_allow_html=True)
 
+st.markdown("---")
 
-st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>El rezago habitacional se localiza principalmente en las entidades del sur, sureste de nuestro país: </p>", unsafe_allow_html=True)
+#Mapa
 df_mapa=df.dropna(subset=['lat','lon'])
 
 
