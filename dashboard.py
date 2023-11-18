@@ -25,8 +25,6 @@ df = pd.read_sql_table(table_name, engine)
 
 
 st.set_page_config(page_title="Resultados vivienda en Mérida", page_icon=":house:")
-import psycopg2
-print(psycopg2.__version__)
 
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 35px; text-align: center'>Portales inmobiliarios y oferta disponible de vivienda nueva en Mérida</p>", unsafe_allow_html=True)
 # #st.image("https://centrourbano.com/revista/wp-content/uploads/Dia-Nacional-de-la-Vivienda-se-reduce-el-rezago-habitacional-en-Mexico-1280x720.jpg", width=700)
