@@ -205,5 +205,5 @@ st.download_button(
 )
 
 #Agregar gif
-st.markdown("<p style='text-align: center'><img src='https://raw.githubusercontent.com/tylerjrichards/GPT3-Dataset-Generator-V2/main/Gifs/blue_grey_arrow.gif' width='100'/></p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: left'><img src='https://raw.githubusercontent.com/tylerjrichards/GPT3-Dataset-Generator-V2/main/Gifs/blue_grey_arrow.gif' width='100'/></p>", unsafe_allow_html=True)
 
