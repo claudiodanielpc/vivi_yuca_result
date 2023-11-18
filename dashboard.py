@@ -30,3 +30,5 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 35p
 # fig = px.histogram(df, x='precio', nbins=10, title='Histograma de precios')
 # fig.show()
 
+st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>¿Dónde se concentra el rezago habitacional?</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>El rezago habitacional se localiza principalmente en las entidades del sur, sureste de nuestro país: </p>", unsafe_allow_html=True)
