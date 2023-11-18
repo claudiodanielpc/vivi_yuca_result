@@ -197,13 +197,25 @@ csv = df.to_csv(index=False).encode('utf-8')
 
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Descargar los datos</p>", unsafe_allow_html=True)
 
-st.download_button(
-    label="Descargar datos como CSV",
-    data=csv,
-    file_name='base_de_datos_completa.csv',
-    mime='text/csv',
-)
+# Use columns to center the GIF above the button
+col1, col2, col3 = st.columns([1,2,1])
 
-#Agregar gif
-st.markdown("<p style='text-align: left'><img src='https://raw.githubusercontent.com/tylerjrichards/GPT3-Dataset-Generator-V2/main/Gifs/blue_grey_arrow.gif' width='100'/></p>", unsafe_allow_html=True)
+with col1:
+    # Left space
+    st.write("")
 
+with col2:
+    # Displaying the GIF from a URL
+    st.markdown("<p style='text-align: center'><img src='https://raw.githubusercontent.com/tylerjrichards/GPT3-Dataset-Generator-V2/main/Gifs/blue_grey_arrow.gif' width='100'/></p>", unsafe_allow_html=True)
+
+    # Your download button
+    st.download_button(
+        label="Descargar datos como CSV",
+        data=csv,
+        file_name='base_de_datos_completa.csv',
+        mime='text/csv',
+    )
+
+with col3:
+    # Right space
+    st.write("")
