@@ -10,17 +10,16 @@ import requests
 from IPython.display import IFrame
 import sqlalchemy
 
-print(sqlalchemy.__version__)
 
 
 
 
-# st.set_page_config(page_title="Resultados vivienda en Mérida", page_icon=":house:")
+st.set_page_config(page_title="Resultados vivienda en Mérida", page_icon=":house:")
 
 
 
 
-# st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 35px; text-align: center'>Portales inmobiliarios y oferta disponible de vivienda nueva en Mérida</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 35px; text-align: center'>Portales inmobiliarios y oferta disponible de vivienda nueva en Mérida</p>", unsafe_allow_html=True)
 # #st.image("https://centrourbano.com/revista/wp-content/uploads/Dia-Nacional-de-la-Vivienda-se-reduce-el-rezago-habitacional-en-Mexico-1280x720.jpg", width=700)
 # st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>¿Qué es el rezago habitacional?</p>", unsafe_allow_html=True)
 
