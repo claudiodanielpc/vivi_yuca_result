@@ -9,3 +9,4 @@ streamlit==1.21.0
 streamlit_extras==0.2.7
 ipython==8.12.0
 sqlalchemy==2.0.23
+psycopg2==2.9.9
