@@ -245,6 +245,24 @@ csv = df.to_csv(index=False).encode('utf-8')
 st.markdown("---")
 
 
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Conteo de amenidades</p>", unsafe_allow_html=True)
+
+# Calculating percentages for the selected colonia
+total_amenities = filtered_df[["casa_club", "privada"]].sum().sum()
+casa_club_pct = (filtered_df["casa_club"].sum() / total_amenities) * 100
+privada_pct = (filtered_df["privada"].sum() / total_amenities) * 100
+
+fig = px.bar(
+    x=["Casa Club", "Privada"],
+    y=[casa_club_pct, privada_pct],
+    labels={"x": "Amenity", "y": "Percentage"},
+    title=f"Amenity Percentages for {selected_colloc}"
+)
+
+# Display the Plotly bar chart in the Streamlit app
+st.plotly_chart(fig)
+
+
 
 
 # Header
