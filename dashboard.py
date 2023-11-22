@@ -50,7 +50,7 @@ st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size:
 st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>Del total de registros, el <b>{:.1f}%</b> cuenta con coordenadas para poder identificar su ubicación en el mapa.</p>".format(df_mapa.shape[0]/df.shape[0]*100,df_mapa.shape[0]/df.shape[0]*100), unsafe_allow_html=True)
 
 
-m = folium.Map(location=[20.983953, -89.6463737], zoom_start=11,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Google Satellite")
+m = folium.Map(location=[20.983953, -89.6463737], zoom_start=11,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Elaboración propia con información de portales inmobiliarios")
 
 #División por colonias
 colonia_marker=folium.FeatureGroup(name="Colonias",show=True)
