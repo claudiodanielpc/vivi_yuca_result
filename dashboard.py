@@ -248,7 +248,7 @@ st.markdown("---")
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Amenidades</p>", unsafe_allow_html=True)
 
 # Calculating percentages for the selected colonia
-total_amenities = filtered_df[["casa_club", "privada", "cochera", "alberca","paddle", "vigilancia"]]
+total_amenities = filtered_df[["casa_club", "privada", "cochera", "alberca","paddle", "vigilancia"]].sum().sum()
 casa_club_pct = (filtered_df["casa_club"].sum() / total_amenities) * 100
 privada_pct = (filtered_df["privada"].sum() / total_amenities) * 100
 cochera_pct = (filtered_df["cochera"].sum() / total_amenities) * 100
