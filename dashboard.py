@@ -61,7 +61,7 @@ folium.GeoJson(
         #Rellenar por grado de marginación
         'fillColor': get_color(feature),
 
-        'fillOpacity': 0.3,
+        'fillOpacity': 0.4,
         'color': '#000000',   # You can adjust the border color if needed
         'weight': 1,
         'dashArray': '5, 5'  # Dashed borders, remove this if not desired
