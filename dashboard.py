@@ -28,14 +28,30 @@ st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: 
 
 st.markdown("---")
 
-#Mapa
+##############
+#####Mapa#####
+###############
 df_mapa=df.dropna(subset=['lat','lon'])
 
+color_mapping = {
+    "Muy bajo": "#ffffb2",  # lightest yellow in YlOrRd scheme
+    "Bajo": "#fecc5c",     # light orange
+    "Medio": "#fd8d3c",    # orange
+    "Alto": "#f03b20",     # dark orange/red
+    "Muy alto": "#bd0026"  # darkest red in YlOrRd scheme
+    }
+
+
+def get_color(feature):
+    gm_value = feature['properties']['gm_2020_left']
+    return color_mapping.get(gm_value, '#FFFFFF')
 
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Concentración territorial de la oferta</p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>Del total de registros, el <b>{:.1f}%</b> cuenta con coordenadas para poder identificar su ubicación en el mapa.</p>".format(df_mapa.shape[0]/df.shape[0]*100,df_mapa.shape[0]/df.shape[0]*100), unsafe_allow_html=True)
 m = folium.Map(location=[21.0000, -89.5000], zoom_start=10,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Google Satellite")
-HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=13).add_to(m)
+HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=13, 
+        
+        ).add_to(m)
 #División por colonias
 colonia_marker=folium.FeatureGroup(name="Colonias",show=True)
 #Agregar capa de colonias
@@ -43,9 +59,9 @@ folium.GeoJson(
     database.load_colonias(),
     style_function=lambda feature: {
         #Rellenar por grado de marginación
-        'fillColor': "Transparent",
+        'fillColor': get_color(feature),
 
-        'fillOpacity': 0.5,
+        'fillOpacity': 0.9,
         'color': '#000000',   # You can adjust the border color if needed
         'weight': 1,
         'dashArray': '5, 5'  # Dashed borders, remove this if not desired
