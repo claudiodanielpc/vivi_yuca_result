@@ -257,7 +257,7 @@ alberca_pct = (filtered_df["alberca"].sum() / total_amenities) * 100
 
 fig = px.bar(
     x=["Casa Club", "Privada", "Cochera", "Alberca"],
-    y=[casa_club_pct, privada_pct],
+    y=[casa_club_pct, privada_pct, cochera_pct, alberca_pct],
     labels={"x": "Amenidad", "y": "Porcentaje"},
     title=f"Porcentaje de amenidades de {selected_colloc}"
 )
