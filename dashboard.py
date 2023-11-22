@@ -43,7 +43,7 @@ color_mapping = {
 
 
 def get_color(feature):
-    gm_value = feature['properties']['gm_2020_left']
+    gm_value = feature['properties']['gm_2020']
     return color_mapping.get(gm_value, '#FFFFFF')
 
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Concentración territorial de la oferta</p>", unsafe_allow_html=True)
@@ -66,7 +66,7 @@ folium.GeoJson(
         'weight': 1,
         'dashArray': '5, 5'  # Dashed borders, remove this if not desired
     },
-tooltip=folium.GeoJsonTooltip(fields=["colonia"],aliases=["Colonia: "])).add_to(colonia_marker
+tooltip=folium.GeoJsonTooltip(fields=["colonia", "gm_2020"],aliases=["Colonia: ", "Grado de marginación: "])).add_to(colonia_marker
                                                                                                     )
 colonia_marker.add_to(m)
 
