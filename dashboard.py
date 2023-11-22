@@ -36,6 +36,29 @@ st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size:
 st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>Del total de registros, el <b>{:.1f}%</b> cuenta con coordenadas para poder identificar su ubicación en el mapa.</p>".format(df_mapa.shape[0]/df.shape[0]*100,df_mapa.shape[0]/df.shape[0]*100), unsafe_allow_html=True)
 m = folium.Map(location=[21.0000, -89.5000], zoom_start=10,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Google Satellite")
 HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=13).add_to(m)
+#División por colonias
+colonia_marker=folium.FeatureGroup(name="Colonias",show=True)
+#Agregar capa de colonias
+folium.GeoJson(
+    database.load_colonias(),
+    style_function=lambda feature: {
+        #Rellenar por grado de marginación
+        'fillColor': "Transparent",
+
+        'fillOpacity': 0.5,
+        'color': '#000000',   # You can adjust the border color if needed
+        'weight': 1,
+        'dashArray': '5, 5'  # Dashed borders, remove this if not desired
+    },
+tooltip=folium.GeoJsonTooltip(fields=["colonia"],aliases=["Colonia: "])).add_to(colonia_marker
+                                                                                                    )
+colonia_marker.add_to(m)
+
+folium.LayerControl().add_to(m)
+
+
+
+
 folium_static(m)
 
 ##Añadir sidebar
@@ -197,6 +220,11 @@ csv = df.to_csv(index=False).encode('utf-8')
 
 
 
+st.markdown("---")
+
+
+
+
 # Header
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Descargar los datos</p>", unsafe_allow_html=True)
 
@@ -221,3 +249,4 @@ with col3:
 
 # Custom HTML for the centered GIF below the button
 st.markdown("<div style='display: flex; justify-content: center;'><img src='https://raw.githubusercontent.com/tylerjrichards/GPT3-Dataset-Generator-V2/main/Gifs/arrow_small_new.gif' width='100'/></div>", unsafe_allow_html=True)
+
