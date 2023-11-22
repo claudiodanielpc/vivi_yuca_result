@@ -37,22 +37,22 @@ st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: 
 m = folium.Map(location=[21.0000, -89.5000], zoom_start=10,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Google Satellite")
 HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=13).add_to(m)
 #División por colonias
-colonia_marker=folium.FeatureGroup(name="Colonias",show=True)
-#Agregar capa de colonias
-folium.GeoJson(
-    database.load_colonias(),
-    style_function=lambda feature: {
-        #Rellenar por grado de marginación
-        'fillColor': "Transparent",
+# colonia_marker=folium.FeatureGroup(name="Colonias",show=True)
+# #Agregar capa de colonias
+# folium.GeoJson(
+#     database.load_colonias(),
+#     style_function=lambda feature: {
+#         #Rellenar por grado de marginación
+#         'fillColor': "Transparent",
 
-        'fillOpacity': 0.5,
-        'color': '#000000',   # You can adjust the border color if needed
-        'weight': 1,
-        'dashArray': '5, 5'  # Dashed borders, remove this if not desired
-    },
-tooltip=folium.GeoJsonTooltip(fields=["colonia"],aliases=["Colonia: "])).add_to(colonia_marker
-                                                                                                    )
-colonia_marker.add_to(m)
+#         'fillOpacity': 0.5,
+#         'color': '#000000',   # You can adjust the border color if needed
+#         'weight': 1,
+#         'dashArray': '5, 5'  # Dashed borders, remove this if not desired
+#     },
+# tooltip=folium.GeoJsonTooltip(fields=["colonia"],aliases=["Colonia: "])).add_to(colonia_marker
+#                                                                                                     )
+# colonia_marker.add_to(m)
 
 folium.LayerControl().add_to(m)
 
