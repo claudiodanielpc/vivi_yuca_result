@@ -9,5 +9,5 @@ def load_data():
 
 @st.cache_data
 def load_colonias():
-    df = gpd.read_file("https://github.com/claudiodanielpc/yucascraper/raw/main/yucascraper/catalogos/yucatan_colonias.shp")
+    df = gpd.read_file("https://raw.githubusercontent.com/claudiodanielpc/vivi_yuca_result/main/data/colonias/merida_colonias.geojson")
     return df
