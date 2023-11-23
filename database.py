@@ -4,7 +4,7 @@ import geopandas as gpd
 
 @st.cache_data
 def load_data():
-    df=pd.read_csv("https://raw.githubusercontent.com/claudiodanielpc/vivi_yuca_result/main/data/viviyuca.csv")
+    df=pd.read_csv("https://raw.githubusercontent.com/claudiodanielpc/vivi_yuca_result/main/data/viviyuca_limpia.csv")
     return df
 
 @st.cache_data
