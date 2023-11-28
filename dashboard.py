@@ -99,12 +99,6 @@ folium.LayerControl().add_to(m)
 folium_static(m) 
 
 
-
-
-
-
-folium_static(m)
-
 ##Añadir sidebar
 st.sidebar.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Fuente de datos</p>", unsafe_allow_html=True)
 st.sidebar.write("<p style='font-family: Century Gothic;'>Para el presente proyecto, se descargó información de los siguientes portales:</p>", unsafe_allow_html=True)
