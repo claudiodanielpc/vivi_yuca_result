@@ -272,7 +272,7 @@ st.markdown("---")
 
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Tamaño de las viviendas</p>", unsafe_allow_html=True)
 
-total=filtered_df['mts_const'].sum()
+
 
 fig = px.histogram(filtered_df, x="mts_const", nbins=20, color_discrete_sequence=['#fca311'])
 fig.update_layout(
