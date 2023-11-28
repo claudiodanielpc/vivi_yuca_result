@@ -73,12 +73,19 @@ tooltip=folium.GeoJsonTooltip(fields=["colonia", "gm_2020"],aliases=["Colonia: "
 colonia_marker.add_to(m)
 
 
-# HeatMap
-HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=14).add_to(m)
+agg_data = df_mapa.groupby(['lat', 'lon']).size().reset_index(name='counts')
 
-# Add color map
-cmap = branca.colormap.LinearColormap(colors=['#00ff00', '#ffff00', '#ff0000'], vmin=df_mapa.value_counts().min(), vmax=df_mapa.value_counts().max(), caption="Número de viviendas")
+# Finding vmin and vmax for the heatmap
+vmin_value = agg_data['counts'].min()
+vmax_value = agg_data['counts'].max()
+
+# Creating the heatmap
+HeatMap(data=agg_data[['lat', 'lon', 'counts']], radius=8, max_zoom=14).add_to(m)
+
+# If you're using a colormap that depends on these values:
+cmap = branca.colormap.LinearColormap(colors=['#00ff00', '#ffff00', '#ff0000'], vmin=vmin_value, vmax=vmax_value, caption="Intensity")
 m.add_child(cmap)
+
 
 folium.LayerControl().add_to(m)
 
@@ -86,7 +93,6 @@ folium.LayerControl().add_to(m)
 folium_static(m) 
 
 
-folium.LayerControl().add_to(m)
 
 
 
