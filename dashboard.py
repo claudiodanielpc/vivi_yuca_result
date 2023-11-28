@@ -254,7 +254,7 @@ st.plotly_chart(fig)
 
 st.markdown("---")  
 
-csv = df.to_csv(index=False).encode('utf-8')
+csv = df.to_csv(index=False).encode('utf-8-sig')
 
 
 
