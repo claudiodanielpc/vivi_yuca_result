@@ -231,7 +231,7 @@ filtered_df["precio_millions"] = filtered_df["precio"] / 1_000_000
 # Crear el histograma
 fig = px.histogram(filtered_df, x="precio_millions", nbins=10, color_discrete_sequence=['#fca311'])
 fig.update_layout(
-    xaxis_title="Precio",
+    xaxis_title="Precio (millones de pesos)",
     yaxis_title="Frecuencia",
     annotations=[
         go.layout.Annotation(
