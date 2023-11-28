@@ -226,8 +226,10 @@ if selected_colloc == 'Total':
 else:
     filtered_df = colloc[colloc['colloc'] == selected_colloc]
 
+filtered_df["precio_millions"] = filtered_df["precio"] / 1_000_000
+
 # Crear el histograma
-fig = px.histogram(filtered_df, x="precio", nbins=5, color_discrete_sequence=['#fca311'])
+fig = px.histogram(filtered_df, x="precio", nbins=10, color_discrete_sequence=['#fca311'])
 fig.update_layout(
     xaxis_title="Precio",
     yaxis_title="Frecuencia",
