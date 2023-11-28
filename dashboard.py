@@ -61,7 +61,7 @@ folium.GeoJson(
     database.load_colonias(),
     style_function=lambda feature: {
         #Rellenar por grado de marginación
-        'fillColor': get_color(feature),
+        'fillColor': 'transparent',
 
         'fillOpacity': 0.4,
         'color': '#000000',   # You can adjust the border color if needed
