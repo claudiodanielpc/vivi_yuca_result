@@ -77,6 +77,7 @@ colonia_marker.add_to(m)
 HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=14, 
         
         ).add_to(m)
+m.add_child(cmap)
 
 
 folium.LayerControl().add_to(m)
