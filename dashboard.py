@@ -276,6 +276,7 @@ st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size:
 
 fig = px.histogram(filtered_df, x="mts_const", nbins=20, color_discrete_sequence=['#fca311'])
 fig.update_layout(
+    title_text=f"Distribución de los metros cuadrados de {selected_colloc}",
     xaxis_title="Metros cuadrados",
     yaxis_title="Frecuencia",
     annotations=[
