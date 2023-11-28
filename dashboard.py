@@ -227,7 +227,7 @@ else:
     filtered_df = colloc[colloc['colloc'] == selected_colloc]
 
 # Crear el histograma
-fig = px.histogram(filtered_df, x="precio", nbins=20, color_discrete_sequence=['#fca311'])
+fig = px.histogram(filtered_df, x="precio", nbins=10, color_discrete_sequence=['#fca311'])
 fig.update_layout(
     xaxis_title="Precio",
     yaxis_title="Frecuencia",
