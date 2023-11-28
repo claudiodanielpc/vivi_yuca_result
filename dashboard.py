@@ -51,8 +51,7 @@ def get_color(feature):
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Concentración territorial de la oferta</p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>Del total de registros, el <b>{:.1f}%</b> cuenta con coordenadas para poder identificar su ubicación en el mapa.</p>".format(df_mapa.shape[0]/df.shape[0]*100,df_mapa.shape[0]/df.shape[0]*100), unsafe_allow_html=True)
 
-colors = ['#00ff00', '#ffff00', '#ff0000']  # green, yellow, red
-cmap = branca.colormap.LinearColormap(colors=colors, vmin=df_mapa.value_counts().min(), vmax=df_mapa.value_counts().max(), caption="Número de viviendas")
+
 m = folium.Map(location=[20.983953, -89.6463737], zoom_start=11,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Elaboración propia con información de portales inmobiliarios")
 
 #División por colonias
@@ -74,10 +73,17 @@ tooltip=folium.GeoJsonTooltip(fields=["colonia", "gm_2020"],aliases=["Colonia: "
 colonia_marker.add_to(m)
 
 
-HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=14, 
-        
-        ).add_to(m)
+# HeatMap
+HeatMap(data=df_mapa[['lat', 'lon']], radius=8, max_zoom=14).add_to(m)
+
+# Add color map
+cmap = branca.colormap.LinearColormap(colors=['#00ff00', '#ffff00', '#ff0000'], vmin=df_mapa.value_counts().min(), vmax=df_mapa.value_counts().max(), caption="Número de viviendas")
 m.add_child(cmap)
+
+folium.LayerControl().add_to(m)
+
+# Display the map in Streamlit
+folium_static(m) 
 
 
 folium.LayerControl().add_to(m)
