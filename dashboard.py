@@ -9,6 +9,8 @@ import database
 import folium
 from folium.plugins import HeatMap
 from streamlit_folium import folium_static
+import branca
+import branca.colormap as cm
 
 
 
@@ -49,7 +51,8 @@ def get_color(feature):
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Concentración territorial de la oferta</p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>Del total de registros, el <b>{:.1f}%</b> cuenta con coordenadas para poder identificar su ubicación en el mapa.</p>".format(df_mapa.shape[0]/df.shape[0]*100,df_mapa.shape[0]/df.shape[0]*100), unsafe_allow_html=True)
 
-
+colors = ['#00ff00', '#ffff00', '#ff0000']  # green, yellow, red
+cmap = branca.colormap.LinearColormap(colors=colors, vmin=df_mapa.value_counts().min(), vmax=df_mapa.value_counts().max(), caption="Número de viviendas")
 m = folium.Map(location=[20.983953, -89.6463737], zoom_start=11,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Elaboración propia con información de portales inmobiliarios")
 
 #División por colonias
