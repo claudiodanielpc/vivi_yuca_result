@@ -52,7 +52,35 @@ st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size:
 st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>Del total de registros, el <b>{:.1f}%</b> cuenta con coordenadas para poder identificar su ubicación en el mapa.</p>".format(df_mapa.shape[0]/df.shape[0]*100,df_mapa.shape[0]/df.shape[0]*100), unsafe_allow_html=True)
 
 
-m = folium.Map(location=[20.983953, -89.6463737], zoom_start=11,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Elaboración propia con información de portales inmobiliarios")
+import folium
+import branca.colormap as cm
+
+# Your existing map centered around the specified location
+m = folium.Map(location=[20.983953, -89.6463737], zoom_start=11)
+
+# Adding Google Satellite tile layer
+google_satellite = folium.TileLayer(
+    tiles='https://www.google.com/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}',
+    attr='Google',
+    name='Google Satellite',
+    overlay=False,
+    control=True
+)
+google_satellite.add_to(m)
+
+# Adding CartoDB Positron tile layer
+cartodb_positron = folium.TileLayer(
+    tiles='https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+    attr='CartoDB',
+    name='CartoDB Positron',
+    overlay=False,
+    control=True
+)
+cartodb_positron.add_to(m)
+
+
+#
+# m = folium.Map(location=[20.983953, -89.6463737], zoom_start=11,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Elaboración propia con información de portales inmobiliarios")
 
 #División por colonias
 colonia_marker=folium.FeatureGroup(name="Colonias",show=True)
