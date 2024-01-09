@@ -127,52 +127,101 @@ folium.LayerControl().add_to(m)
 folium_static(m) 
 
 
-##Añadir sidebar
-st.sidebar.selectbox('Selecciona la página que deseas ver', ['Viviendas', 'Terrenos'])
-st.sidebarmarkdown("---")
-st.sidebar.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Fuente de datos</p>", unsafe_allow_html=True)
-st.sidebar.write("<p style='font-family: Century Gothic;'>Para el presente proyecto, se descargó información de los siguientes portales:</p>", unsafe_allow_html=True)
-#Lamudi
+# ##Añadir sidebar
+# st.sidebar.selectbox('Selecciona la página que deseas ver', ['Viviendas', 'Terrenos'])
+# st.sidebarmarkdown("---")
+#
+# st.sidebar.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Fuente de datos</p>", unsafe_allow_html=True)
+# st.sidebar.write("<p style='font-family: Century Gothic;'>Para el presente proyecto, se descargó información de los siguientes portales:</p>", unsafe_allow_html=True)
+# #Lamudi
+# st.sidebar.markdown(
+# f"<div style='text-align:center;font-family:montserrat;'>"
+# f"<img src='https://www.lamudi.com.mx/journal/wp-content//uploads/2020/02/lamudi-9-marzo.png' alt='Lamudi' width='70'/>"
+# #Añadir url para redirigir a la página del INEGI
+# f"<p><a href='https://www.lamudi.com.mx/'>Lamudi</a></p>"
+# f"</div>",
+# unsafe_allow_html=True)
+#
+# st.sidebar.write(" ")
+#
+# #Goodlers
+# st.sidebar.markdown(
+# f"<div style='text-align:center;font-family:montserrat;'>"
+# f"<img src='https://goodlers.com/_nuxt/img/fb7d937.png' alt='Goodlers' width='70'/>"
+# #Añadir url para redirigir a la página del INEGI
+# f"<p><a href='https://goodlers.com/'>Goodlers</a></p>"
+# f"</div>",
+# unsafe_allow_html=True)
+#
+# st.sidebar.write(" ")
+#
+# #Easybroker
+# st.sidebar.markdown(
+# f"<div style='text-align:center;font-family:montserrat;'>"
+# f"<img src='https://www.easybroker.com/brand_files/logo.png' alt='Easybroker' width='70'/>"
+# #Añadir url para redirigir a la página del INEGI
+# f"<p><a href='https://www.easybroker.com/mx/'>Easybroker</a></p>"
+# f"</div>",
+# unsafe_allow_html=True)
+#
+# st.sidebar.write(" ")
+#
+# #Inmuebles24
+# st.sidebar.markdown(
+# f"<div style='text-align:center;font-family:montserrat;'>"
+# f"<img src='https://surveymonkey-assets.s3.amazonaws.com/survey/297849572/d1726151-bb64-4ee7-a3ab-429aaaf70a07.png' alt='Inmuebles24' width='70'/>"
+# #Añadir url para redirigir a la página del INEGI
+# f"<p><a href='https://www.inmuebles24.com/'>Inmuebles24</a></p>"
+# f"</div>",
+# unsafe_allow_html=True)
+
+# Sidebar - Selectbox for page selection
+#st.sidebar.selectbox('Selecciona la página que deseas ver', ['Viviendas', 'Terrenos'])
+
+# Separator
+st.sidebar.markdown("---")
+
+# Sidebar - Custom Markdown for data source title
 st.sidebar.markdown(
-f"<div style='text-align:center;font-family:montserrat;'>"
-f"<img src='https://www.lamudi.com.mx/journal/wp-content//uploads/2020/02/lamudi-9-marzo.png' alt='Lamudi' width='70'/>"
-#Añadir url para redirigir a la página del INEGI
-f"<p><a href='https://www.lamudi.com.mx/'>Lamudi</a></p>"
-f"</div>",
-unsafe_allow_html=True)
+    "<p style='font-family: Century Gothic; font-weight: bold; font-size: 20px; text-align: center'>Fuente de datos</p>",
+    unsafe_allow_html=True)
 
-st.sidebar.write(" ")
-
-#Goodlers
+# Sidebar - Custom Markdown for data source description
 st.sidebar.markdown(
-f"<div style='text-align:center;font-family:montserrat;'>"
-f"<img src='https://goodlers.com/_nuxt/img/fb7d937.png' alt='Goodlers' width='70'/>"
-#Añadir url para redirigir a la página del INEGI
-f"<p><a href='https://goodlers.com/'>Goodlers</a></p>"
-f"</div>",
-unsafe_allow_html=True)
+    "<p style='font-family: Century Gothic;'>Para el presente proyecto, se descargó información de los siguientes portales:</p>",
+    unsafe_allow_html=True)
 
-st.sidebar.write(" ")
-
-#Easybroker
+# Sidebar - Lamudi
 st.sidebar.markdown(
-f"<div style='text-align:center;font-family:montserrat;'>"
-f"<img src='https://www.easybroker.com/brand_files/logo.png' alt='Easybroker' width='70'/>"
-#Añadir url para redirigir a la página del INEGI
-f"<p><a href='https://www.easybroker.com/mx/'>Easybroker</a></p>"
-f"</div>",
-unsafe_allow_html=True)
+    f"<div style='text-align:center;font-family:montserrat;'>"
+    f"<img src='https://www.lamudi.com.mx/journal/wp-content//uploads/2020/02/lamudi-9-marzo.png' alt='Lamudi' width='70'/>"
+    f"<p><a href='https://www.lamudi.com.mx/'>Lamudi</a></p>"
+    f"</div>",
+    unsafe_allow_html=True)
 
-st.sidebar.write(" ")
-
-#Inmuebles24
+# Sidebar - Goodlers
 st.sidebar.markdown(
-f"<div style='text-align:center;font-family:montserrat;'>"
-f"<img src='https://surveymonkey-assets.s3.amazonaws.com/survey/297849572/d1726151-bb64-4ee7-a3ab-429aaaf70a07.png' alt='Inmuebles24' width='70'/>"
-#Añadir url para redirigir a la página del INEGI
-f"<p><a href='https://www.inmuebles24.com/'>Inmuebles24</a></p>"
-f"</div>",
-unsafe_allow_html=True)
+    f"<div style='text-align:center;font-family:montserrat;'>"
+    f"<img src='https://goodlers.com/_nuxt/img/fb7d937.png' alt='Goodlers' width='70'/>"
+    f"<p><a href='https://goodlers.com/'>Goodlers</a></p>"
+    f"</div>",
+    unsafe_allow_html=True)
+
+# Sidebar - Easybroker
+st.sidebar.markdown(
+    f"<div style='text-align:center;font-family:montserrat;'>"
+    f"<img src='https://www.easybroker.com/brand_files/logo.png' alt='Easybroker' width='70'/>"
+    f"<p><a href='https://www.easybroker.com/mx/'>Easybroker</a></p>"
+    f"</div>",
+    unsafe_allow_html=True)
+
+# Sidebar - Inmuebles24
+st.sidebar.markdown(
+    f"<div style='text-align:center;font-family:montserrat;'>"
+    f"<img src='https://surveymonkey-assets.s3.amazonaws.com/survey/297849572/d1726151-bb64-4ee7-a3ab-429aaaf70a07.png' alt='Inmuebles24' width='70'/>"
+    f"<p><a href='https://www.inmuebles24.com/'>Inmuebles24</a></p>"
+    f"</div>",
+    unsafe_allow_html=True)
 
 
 
