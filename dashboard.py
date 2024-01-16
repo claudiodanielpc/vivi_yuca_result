@@ -11,6 +11,7 @@ from folium.plugins import HeatMap
 from streamlit_folium import folium_static
 import branca
 import branca.colormap as cm
+import geopandas as gpd
 
 
 
@@ -80,13 +81,27 @@ cartodb_positron.add_to(m)
 
 
 #
-# m = folium.Map(location=[20.983953, -89.6463737], zoom_start=11,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Elaboración propia con información de portales inmobiliarios")
+# m = folium.Map(location=[20.983953,-89.6463737], zoom_start=11,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Elaboración propia con información de portales inmobiliarios")
 
 #División por colonias
 colonia_marker=folium.FeatureGroup(name="Colonias",show=True)
+
+df=database.load_data()
+colonias=database.load_colonias()
+df=df.dropna(subset=['lat','lon'])
+df=gpd.GeoDataFrame(df,geometry=gpd.points_from_xy(df["lon"],df["lat"]))
+df.crs=colonias.crs
+combinada=gpd.sjoin(colonias,df,how='inner',op='contains')
+combinada=combinada.groupby(['geometry']).size().reset_index(name='viviendas_venta')
+colonias=colonias.merge(combinada,how='left',on='geometry')
+
+
+
+
+
 #Agregar capa de colonias
 folium.GeoJson(
-    database.load_colonias(),
+    colonias,
     style_function=lambda feature: {
         #Rellenar por grado de marginación
         'fillColor': 'transparent',
@@ -96,9 +111,13 @@ folium.GeoJson(
         'weight': 1,
         'dashArray': '5, 5'  # Dashed borders, remove this if not desired
     },
-tooltip=folium.GeoJsonTooltip(fields=["colonia"],aliases=["Colonia: "])).add_to(colonia_marker
+tooltip=folium.GeoJsonTooltip(fields=["colonia", "viviendas_venta",
+                                      alias["colonia"
+                                        ]],aliases=["Colonia: ","Viviendas en venta: "])).add_to(colonia_marker
                                                                                                     )
 colonia_marker.add_to(m)
+
+
 
 
 agg_data = df_mapa.groupby(['lat', 'lon']).size().reset_index(name='counts')
