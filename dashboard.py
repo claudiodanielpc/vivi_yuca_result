@@ -75,8 +75,7 @@ cartodb_positron = folium.TileLayer(
     name='CartoDB Positron',
     overlay=False,
     control=True
-)
-cartodb_positron.add_to(m)
+).add_to(m)
 
 
 #
@@ -93,9 +92,6 @@ df.crs=colonias.crs
 combinada=gpd.sjoin(colonias,df,how='inner',op='contains')
 combinada=combinada.groupby(['geometry']).size().reset_index(name='viviendas_venta')
 colonias=colonias.merge(combinada,how='left',on='geometry')
-
-
-
 
 
 #Agregar capa de colonias
@@ -115,12 +111,7 @@ folium.GeoJson(
 tooltip = folium.GeoJsonTooltip(
     fields=["colonia", "viviendas_venta"],
     aliases=["Colonia: ", "Viviendas en venta: "]
-).add_to(colonia_marker)
-
-colonia_marker.add_to(m)
-
-
-
+).add_to(m)
 
 
 agg_data = df_mapa.groupby(['lat', 'lon']).size().reset_index(name='counts')
