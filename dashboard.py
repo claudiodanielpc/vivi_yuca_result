@@ -15,7 +15,6 @@ import geopandas as gpd
 
 
 
-
 st.set_page_config(page_title="Resultados vivienda en Mérida", page_icon=":house:")
 df = database.load_data()
 df['colloc'] = df['colloc'].str.title()
@@ -116,6 +115,7 @@ tooltip=folium.GeoJsonTooltip(fields=["colonia", "viviendas_venta",
                                         ]],aliases=["Colonia: ","Viviendas en venta: "])).add_to(colonia_marker
                                                                                                     )
 colonia_marker.add_to(m)
+
 
 
 
