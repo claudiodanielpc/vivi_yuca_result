@@ -110,10 +110,13 @@ folium.GeoJson(
         'weight': 1,
         'dashArray': '5, 5'  # Dashed borders, remove this if not desired
     },
-tooltip=folium.GeoJsonTooltip(fields=["colonia", "viviendas_venta",
-                                      alias["colonia"
-                                        ]],aliases=["Colonia: ","Viviendas en venta: "])).add_to(colonia_marker
-                                                                                                    )
+
+
+tooltip = folium.GeoJsonTooltip(
+    fields=["colonia", "viviendas_venta"],
+    aliases=["Colonia: ", "Viviendas en venta: "]
+).add_to(colonia_marker)
+
 colonia_marker.add_to(m)
 
 
