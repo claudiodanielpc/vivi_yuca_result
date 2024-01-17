@@ -91,3 +91,5 @@ cartodb_positron = folium.TileLayer(
     overlay=False,
     control=True
 ).add_to(m)
+
+folium_static(m)
