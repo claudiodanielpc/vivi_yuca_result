@@ -114,33 +114,32 @@ tooltip = folium.GeoJsonTooltip(
 
 ).add_to(m)
 
-folium_static(m)
 
 
-# agg_data = df_mapa.groupby(['lat', 'lon']).size().reset_index(name='counts')
-#
-# # Finding vmin and vmax for the heatmap
-# vmin_value = agg_data['counts'].min()
-# vmax_value = agg_data['counts'].max()
-#
-# # Creating the heatmap
-# HeatMap(data=agg_data[['lat', 'lon', 'counts']], radius=8, max_zoom=14,name="Viviendas",overlay=True, control=True,show=True).add_to(m)
-#
-# cmap = branca.colormap.LinearColormap(
-#     colors=['green', 'cyan', 'blue'],
-#     index=[vmin_value, (vmin_value + vmax_value) / 2, vmax_value],
-#     vmin=vmin_value, vmax=vmax_value,
-#     caption="Viviendas"
-# )
-#
-# # Adding the colormap to the map
-# m.add_child(cmap)
-#
+agg_data = df_mapa.groupby(['lat', 'lon']).size().reset_index(name='counts')
 
-#folium.LayerControl().add_to(m)
+# Finding vmin and vmax for the heatmap
+vmin_value = agg_data['counts'].min()
+vmax_value = agg_data['counts'].max()
+
+# Creating the heatmap
+HeatMap(data=agg_data[['lat', 'lon', 'counts']], radius=8, max_zoom=14,name="Viviendas",overlay=True, control=True,show=True).add_to(m)
+
+cmap = branca.colormap.LinearColormap(
+    colors=['green', 'cyan', 'blue'],
+    index=[vmin_value, (vmin_value + vmax_value) / 2, vmax_value],
+    vmin=vmin_value, vmax=vmax_value,
+    caption="Viviendas"
+)
+
+# Adding the colormap to the map
+m.add_child(cmap)
+
+
+folium.LayerControl().add_to(m)
 
 # Display the map in Streamlit
-
+folium_static(m)
 
 
 # ##Añadir sidebar
