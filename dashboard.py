@@ -110,7 +110,9 @@ folium.GeoJson(
 tooltip = folium.GeoJsonTooltip(
     fields=["colonia", "viviendas_venta"],
     aliases=["Colonia: ", "Viviendas en venta: "]
-).add_to(m)
+).add_to(m)).add_to(colonia_marker)
+
+folium_static(m)
 
 
 # agg_data = df_mapa.groupby(['lat', 'lon']).size().reset_index(name='counts')
@@ -136,7 +138,7 @@ tooltip = folium.GeoJsonTooltip(
 #folium.LayerControl().add_to(m)
 
 # Display the map in Streamlit
-folium_static(m) 
+
 
 
 # ##Añadir sidebar
