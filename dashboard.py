@@ -134,7 +134,7 @@ tooltip = folium.GeoJsonTooltip(
 # m.add_child(cmap)
 #
 
-folium.LayerControl().add_to(m)
+#folium.LayerControl().add_to(m)
 
 # Display the map in Streamlit
 folium_static(m) 
