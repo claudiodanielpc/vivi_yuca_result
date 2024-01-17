@@ -55,6 +55,16 @@ st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: 
 import folium
 import branca.colormap as cm
 
+df=database.load_data()
+colonias=database.load_colonias()
+df=df.dropna(subset=['lat','lon'])
+df=gpd.GeoDataFrame(df,geometry=gpd.points_from_xy(df["lon"],df["lat"]))
+df.crs=colonias.crs
+combinada=gpd.sjoin(colonias,df,how='inner',op='contains')
+combinada=combinada.groupby(['geometry']).size().reset_index(name='viviendas_venta')
+colonias=colonias.merge(combinada,how='left',on='geometry')
+
+
 # Your existing map centered around the specified location
 m = folium.Map(location=[20.983953, -89.6463737], zoom_start=11)
 
@@ -83,17 +93,6 @@ cartodb_positron = folium.TileLayer(
 
 #División por colonias
 colonia_marker=folium.FeatureGroup(name="Colonias",show=True)
-
-df=database.load_data()
-colonias=database.load_colonias()
-df=df.dropna(subset=['lat','lon'])
-df=gpd.GeoDataFrame(df,geometry=gpd.points_from_xy(df["lon"],df["lat"]))
-df.crs=colonias.crs
-combinada=gpd.sjoin(colonias,df,how='inner',op='contains')
-combinada=combinada.groupby(['geometry']).size().reset_index(name='viviendas_venta')
-colonias=colonias.merge(combinada,how='left',on='geometry')
-
-
 #Agregar capa de colonias
 folium.GeoJson(
     colonias,
