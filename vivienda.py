@@ -126,7 +126,8 @@ vmax_value = agg_data['counts'].max()
 HeatMap(data=agg_data[['lat', 'lon', 'counts']], radius=8, max_zoom=14,name="Viviendas",overlay=True, control=True,show=True).add_to(m)
 
 cmap = branca.colormap.LinearColormap(
-    colors=['green', 'cyan', 'blue'],
+    #colors=['green', 'cyan', 'blue'],
+    colors=['yellow', 'orange', 'red'],
     index=[vmin_value, (vmin_value + vmax_value) / 2, vmax_value],
     vmin=vmin_value, vmax=vmax_value,
     caption="Viviendas"
