@@ -131,7 +131,7 @@ cmap = branca.colormap.LinearColormap(
     #colors=['green', 'cyan', 'blue'],
     colors=['yellow', 'orange', 'red'],
     index=[vmin_value, (vmin_value + vmax_value) / 2, vmax_value],
-    vmin=vmin_value, vmax=vmax_value,
+    vmin=vmin_value, vmax=531,
     caption="Viviendas"
 )
 
