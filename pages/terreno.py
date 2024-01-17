@@ -64,3 +64,30 @@ st.sidebar.markdown(
     f"<p><a href='https://www.inmuebles24.com/'>Inmuebles24</a></p>"
     f"</div>",
     unsafe_allow_html=True)
+
+
+
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Concentración territorial de la oferta</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>Del total de registros, el <b>{:.1f}%</b> cuenta con coordenadas para poder identificar su ubicación en el mapa.</p>".format(df_mapa.shape[0]/df.shape[0]*100,df_mapa.shape[0]/df.shape[0]*100), unsafe_allow_html=True)
+
+
+m = folium.Map(location=[20.983953, -89.6463737], zoom_start=11)
+
+# Adding Google Satellite tile layer
+google_satellite = folium.TileLayer(
+    tiles='https://www.google.com/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}',
+    attr='Google',
+    name='Google Satellite',
+    overlay=False,
+    control=True
+)
+google_satellite.add_to(m)
+
+# Adding CartoDB Positron tile layer
+cartodb_positron = folium.TileLayer(
+    tiles='https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+    attr='CartoDB',
+    name='CartoDB Positron',
+    overlay=False,
+    control=True
+).add_to(m)
