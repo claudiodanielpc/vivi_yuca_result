@@ -289,7 +289,7 @@ st.plotly_chart(fig)
 
 
 
-st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Tamaño de los terrenos</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Superficie de los terrenos</p>", unsafe_allow_html=True)
 
 
 
