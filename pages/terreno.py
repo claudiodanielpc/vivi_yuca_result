@@ -237,3 +237,55 @@ st.plotly_chart(fig)
 
 
 
+
+st.markdown("---")
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿Cómo se distribuyen los precios por zona?</p>", unsafe_allow_html=True)
+
+
+colloc=df.copy()
+#Eliminar registros con colloc en nan
+colloc=colloc.dropna(subset=['colloc'])
+
+# Agregar una opción "Total" a las opciones de colloc
+unique_colloc = list(colloc['colloc'].unique())
+#Ordenar alfabéticamente
+unique_colloc.sort()
+unique_colloc = ['Total'] + unique_colloc
+selected_colloc = st.selectbox('Selecciona una zona', unique_colloc)
+
+# Filtrar los datos basado en la selección
+if selected_colloc == 'Total':
+    filtered_df = colloc
+else:
+    filtered_df = colloc[colloc['colloc'] == selected_colloc]
+
+filtered_df["precio_millions"] = filtered_df["precio"] / 1_000_000
+
+# Crear el histograma
+fig = px.histogram(filtered_df, x="preciometro", nbins=20, color_discrete_sequence=['#fca311'])
+fig.update_layout(
+    xaxis_title="Precio (millones de pesos)",
+    yaxis_title="Frecuencia",
+    annotations=[
+        go.layout.Annotation(
+            text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
+            xref='paper',
+            yref='paper',
+            x=0,
+            y=-0.2,
+            showarrow=False,
+            font=dict(
+                family='Century Gothic',
+                size=12,
+                color='grey'
+            )
+        )
+    ]
+)
+
+# Mostrar el histograma en la aplicación Streamlit
+st.plotly_chart(fig)
+
+
+
+
