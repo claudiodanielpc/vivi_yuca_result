@@ -13,5 +13,5 @@ def load_colonias():
     return df
 @st.cache_data
 def load_terrenos():
-    df = pd.read_file("https://raw.githubusercontent.com/claudiodanielpc/vivi_yuca_result/main/data/terrenosyuca_limpia.csv")
+    df = pd.read_csv("https://raw.githubusercontent.com/claudiodanielpc/vivi_yuca_result/main/data/terrenosyuca_limpia.csv")
     return df
