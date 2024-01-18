@@ -15,9 +15,23 @@ import geopandas as gpd
 
 
 st.set_page_config(page_title="Resultados terrenos en Mérida", page_icon=":house:")
-
+df = database.load_terrenos()
+df['colloc'] = df['colloc'].str.title()
 
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 35px; text-align: center'>Portales inmobiliarios y oferta de terrenos en Mérida</p>", unsafe_allow_html=True)
+
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Algunos datos generales</p>", unsafe_allow_html=True)
+#Length of the dataframe
+st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>La base de datos cuenta con un total de <b>{:,}</b> registros de vivienda en venta en el municipio de Mérida, Yucatán.</p>".format(df.shape[0]), unsafe_allow_html=True)
+
+st.markdown("---")
+
+##############
+#####Mapa#####
+###############
+df_mapa=df.dropna(subset=['lat','lon'])
+
+
 
 
 # Separator
@@ -66,9 +80,25 @@ st.sidebar.markdown(
     unsafe_allow_html=True)
 
 
+def get_color(feature):
+    gm_value = feature['properties']['gm_2020']
+    return color_mapping.get(gm_value, '#FFFFFF')
 
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Concentración territorial de la oferta</p>", unsafe_allow_html=True)
-#st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>Del total de registros, el <b>{:.1f}%</b> cuenta con coordenadas para poder identificar su ubicación en el mapa.</p>".format(df_mapa.shape[0]/df.shape[0]*100,df_mapa.shape[0]/df.shape[0]*100), unsafe_allow_html=True)
+st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>Del total de registros, el <b>{:.1f}%</b> cuenta con coordenadas para poder identificar su ubicación en el mapa.</p>".format(df_mapa.shape[0]/df.shape[0]*100,df_mapa.shape[0]/df.shape[0]*100), unsafe_allow_html=True)
+
+import folium
+import branca.colormap as cm
+
+df=database.load_terrenos()
+colonias=database.load_colonias()
+df=df.dropna(subset=['lat','lon'])
+df=gpd.GeoDataFrame(df,geometry=gpd.points_from_xy(df["lon"],df["lat"]))
+df.crs=colonias.crs
+combinada=gpd.sjoin(colonias,df,how='inner',op='contains')
+combinada=combinada.groupby(['geometry']).size().reset_index(name='terrenos_venta')
+colonias=colonias.merge(combinada,how='left',on='geometry')
+
 
 
 m = folium.Map(location=[20.983953, -89.6463737], zoom_start=11)
@@ -92,7 +122,59 @@ cartodb_positron = folium.TileLayer(
     control=True
 ).add_to(m)
 
+#
+# m = folium.Map(location=[20.983953,-89.6463737], zoom_start=11,tiles="http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}", attr="Elaboración propia con información de portales inmobiliarios")
+
+#División por colonias
+colonia_marker=folium.FeatureGroup(name="Colonias",show=True)
+#Agregar capa de colonias
+folium.GeoJson(
+    colonias,
+    style_function=lambda feature: {
+        #Rellenar por grado de marginación
+        'fillColor': 'transparent',
+
+        'fillOpacity': 0.4,
+        'color': '#000000',   # You can adjust the border color if needed
+        'weight': 1,
+        'dashArray': '5, 5'  # Dashed borders, remove this if not desired
+    },
+
+
+tooltip = folium.GeoJsonTooltip(
+    fields=["colonia", "terrenos_venta"],
+    aliases=["Colonia: ", "Terrenos en venta: "]
+).add_to(colonia_marker)
+
+).add_to(m)
+
+
+
+agg_data = df_mapa.groupby(['lat', 'lon']).size().reset_index(name='counts')
+
+# Finding vmin and vmax for the heatmap
+vmin_value = agg_data['counts'].min()
+vmax_value = agg_data['counts'].max()
+
+# Creating the heatmap
+HeatMap(data=agg_data[['lat', 'lon', 'counts']], radius=8, max_zoom=14,name="Terrenos",overlay=True, control=True,show=True,
+
+        gradient={0.0: 'yellow', 0.5: 'orange', 1.0: 'red'}).add_to(m)
+
+cmap = branca.colormap.LinearColormap(
+    #colors=['green', 'cyan', 'blue'],
+    colors=['yellow', 'orange', 'red'],
+    index=[vmin_value, (vmin_value + vmax_value) / 2, vmax_value],
+    vmin=vmin_value, vmax=vmax_value,
+    caption="Terrenos"
+)
+
+# Adding the colormap to the map
+m.add_child(cmap)
+
 
 folium.LayerControl().add_to(m)
 
+# Display the map in Streamlit
 folium_static(m)
+
