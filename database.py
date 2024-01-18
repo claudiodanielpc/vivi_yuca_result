@@ -11,3 +11,7 @@ def load_data():
 def load_colonias():
     df = gpd.read_file("https://raw.githubusercontent.com/claudiodanielpc/vivi_yuca_result/main/data/colonias/merida_colonias.geojson")
     return df
+@st.cache_data
+def load_terrenos():
+    df = pd.read_file("https://raw.githubusercontent.com/claudiodanielpc/vivi_yuca_result/main/data/terrenos_yuca_limpia.csv")
+    return df
