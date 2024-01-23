@@ -88,13 +88,13 @@ st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: 
 import folium
 import branca.colormap as cm
 
-df=database.load_terrenos()
+df=database.load_depas()
 colonias=database.load_colonias()
 df=df.dropna(subset=['lat','lon'])
 df=gpd.GeoDataFrame(df,geometry=gpd.points_from_xy(df["lon"],df["lat"]))
 df.crs=colonias.crs
 combinada=gpd.sjoin(colonias,df,how='inner',op='contains')
-combinada=combinada.groupby(['geometry']).size().reset_index(name='terrenos_venta')
+combinada=combinada.groupby(['geometry']).size().reset_index(name='depas_venta')
 colonias=colonias.merge(combinada,how='left',on='geometry')
 
 
@@ -140,8 +140,8 @@ folium.GeoJson(
 
 
 tooltip = folium.GeoJsonTooltip(
-    fields=["colonia", "terrenos_venta"],
-    aliases=["Colonia: ", "Terrenos en venta: "]
+    fields=["colonia", "depas_venta"],
+    aliases=["Colonia: ", "Departamentos en venta: "]
 ).add_to(colonia_marker)
 
 ).add_to(m)
@@ -155,7 +155,7 @@ vmin_value = agg_data['counts'].min()
 vmax_value = agg_data['counts'].max()
 
 # Creating the heatmap
-HeatMap(data=agg_data[['lat', 'lon', 'counts']], radius=8, max_zoom=14,name="Terrenos",overlay=True, control=True,show=True,
+HeatMap(data=agg_data[['lat', 'lon', 'counts']], radius=8, max_zoom=14,name="Departamentos",overlay=True, control=True,show=True,
 
         gradient={0.0: 'yellow', 0.5: 'orange', 1.0: 'red'}).add_to(m)
 
