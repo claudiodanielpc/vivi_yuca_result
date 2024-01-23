@@ -285,3 +285,61 @@ fig.update_layout(
 # Mostrar el histograma en la aplicación Streamlit
 st.plotly_chart(fig)
 
+st.markdown("---")
+
+
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Amenidades</p>", unsafe_allow_html=True)
+
+# Calculating percentages for the selected colonia
+total_amenities = filtered_df[["casa_club", "privada", "cochera", "alberca","paddle", "vigilancia"]].sum().sum()
+casa_club_pct = (filtered_df["casa_club"].sum() / total_amenities) * 100
+privada_pct = (filtered_df["privada"].sum() / total_amenities) * 100
+cochera_pct = (filtered_df["cochera"].sum() / total_amenities) * 100
+alberca_pct = (filtered_df["alberca"].sum() / total_amenities) * 100
+paddle_pct = (filtered_df["paddle"].sum() / total_amenities) * 100
+vigilancia_pct = (filtered_df["vigilancia"].sum() / total_amenities) * 100
+
+
+fig = px.bar(
+    x=["Casa Club", "Privada", "Cochera", "Alberca", "Padel", "Vigilancia"],
+    y=[casa_club_pct, privada_pct, cochera_pct, alberca_pct, paddle_pct, vigilancia_pct],
+    labels={"x": "Amenidad", "y": "Porcentaje"},
+    title=f"Porcentaje de amenidades de {selected_colloc}"
+)
+
+# Display the Plotly bar chart in the Streamlit app
+st.plotly_chart(fig)
+
+st.markdown("---")
+
+
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Tamaño de los departamentos</p>", unsafe_allow_html=True)
+
+
+
+fig = px.histogram(filtered_df, x="mts_const", nbins=20, color_discrete_sequence=['#fca311'])
+fig.update_layout(
+    title_text=f"Distribución de los metros cuadrados de {selected_colloc}",
+    xaxis_title="Metros cuadrados",
+    yaxis_title="Frecuencia",
+    annotations=[
+        go.layout.Annotation(
+            text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
+            xref='paper',
+            yref='paper',
+            x=0,
+            y=-0.2,
+            showarrow=False,
+            font=dict(
+                family='Century Gothic',
+                size=12,
+                color='grey'
+            )
+        )
+    ]
+)
+
+# Display the Plotly bar chart in the Streamlit app
+st.plotly_chart(fig)
+
+
