@@ -175,3 +175,62 @@ folium.LayerControl().add_to(m)
 
 # Display the map in Streamlit
 folium_static(m)
+
+
+# Gráfica de registros por colonia
+localidad_counts = df['colloc'].value_counts().reset_index()
+localidad_counts.columns = ['colloc', 'count']
+# Obtener porcentaje
+localidad_counts['porcentaje'] = localidad_counts['count'] / localidad_counts['count'].sum() * 100
+# Ordenar y dejar los 20 primeros
+localidad_counts = localidad_counts.sort_values(by='porcentaje', ascending=False).head(20)
+# Localidades con primera letra en mayúscula
+localidad_counts['colloc'] = localidad_counts['colloc'].str.title()
+
+# Display the header using Markdown
+st.markdown(
+    "<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>¿En qué colonias o localidades se concentra la oferta?</p>",
+    unsafe_allow_html=True)
+
+# Create the bar chart with Plotly Express
+fig = px.bar(localidad_counts.sort_values(by='porcentaje', ascending=True),
+
+             x='porcentaje',
+             y='colloc',
+             orientation='h',
+             color='porcentaje',
+             color_continuous_scale='YlOrRd',
+             )
+fig.update_layout(
+    coloraxis_colorbar=dict(
+        title="%",
+
+        dtick=3
+    ))
+
+# Update the layout of the figure
+fig.update_layout(
+    showlegend=False,
+    yaxis_title=None,  # Removes the y-axis title if desired
+    xaxis_title="Porcentaje",  # Customize the x-axis title to represent frequency
+    # Ensures the highest value is at the top
+    annotations=[
+        go.layout.Annotation(
+            text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
+            xref='paper',
+            yref='paper',
+            x=0,
+            y=-0.2,
+            showarrow=False,
+            font=dict(
+                family='Century Gothic',
+                size=12,
+                color='grey'
+            )
+        )
+    ]
+)
+
+# Render the bar chart in Streamlit
+st.plotly_chart(fig)
+
