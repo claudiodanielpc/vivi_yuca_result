@@ -232,12 +232,12 @@ fig.update_layout(
 )
 # Add percentage labels at the top of each bar
 fig.update_traces(
-    texttemplate='%{x:.2f}%',  # Format of the label, showing the percentage with two decimal places
-    textposition='inside',
+    texttemplate='%{x:.1f}%',  # Format of the label, showing the percentage with two decimal places
+    textposition='outside',
     textfont=dict(
         family='Century Gothic',
-        size=10,
-        color='white'  # You can adjust the color of the labels as needed
+        size=12,
+        color='black'
     )
 )
 
