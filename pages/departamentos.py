@@ -237,7 +237,7 @@ fig.update_traces(
     textfont=dict(
         family='Century Gothic',
         size=12,
-        color='black'
+        color='red'
     )
 )
 
