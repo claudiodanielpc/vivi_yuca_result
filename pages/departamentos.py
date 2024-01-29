@@ -236,7 +236,7 @@ fig.update_traces(
     textposition='outside',
     textfont=dict(
         family='Century Gothic',
-        size=11,
+        size=10,
         color='red'
     )
 )
