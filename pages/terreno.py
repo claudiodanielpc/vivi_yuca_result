@@ -232,6 +232,18 @@ fig.update_layout(
     ]
 )
 
+# Add percentage labels at the top of each bar
+fig.update_traces(
+    texttemplate='%{x:.1f}%',  # Format of the label, showing the percentage with two decimal places
+    textposition='outside',
+    textfont=dict(
+        family='Century Gothic',
+        size=10,
+        color='red'
+    )
+)
+
+
 # Render the bar chart in Streamlit
 st.plotly_chart(fig)
 
@@ -282,6 +294,8 @@ fig.update_layout(
         )
     ]
 )
+
+
 
 # Mostrar el histograma en la aplicación Streamlit
 st.plotly_chart(fig)
