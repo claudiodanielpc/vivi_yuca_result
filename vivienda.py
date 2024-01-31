@@ -426,6 +426,7 @@ fig.update_layout(
 # Display the Plotly bar chart in the Streamlit app
 st.plotly_chart(fig)
 
+st.markdown("---")
 
 
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Número de cuartos</p>", unsafe_allow_html=True)
@@ -436,6 +437,38 @@ fig = px.histogram(filtered_df, x="recamaras", nbins=20, color_discrete_sequence
 fig.update_layout(
     title_text=f"Distribución de cuartos de {selected_colloc}",
     xaxis_title="Cuartos",
+    yaxis_title="Frecuencia",
+    annotations=[
+        go.layout.Annotation(
+            text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
+            xref='paper',
+            yref='paper',
+            x=0,
+            y=-0.2,
+            showarrow=False,
+            font=dict(
+                family='Century Gothic',
+                size=12,
+                color='grey'
+            )
+        )
+    ]
+)
+
+# Display the Plotly bar chart in the Streamlit app
+st.plotly_chart(fig)
+
+
+st.markdown("---")
+
+st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Número de baños</p>", unsafe_allow_html=True)
+
+
+
+fig = px.histogram(filtered_df, x="bathrooms", nbins=20, color_discrete_sequence=['#fca311'])
+fig.update_layout(
+    title_text=f"Distribución de baños de {selected_colloc}",
+    xaxis_title="Baños",
     yaxis_title="Frecuencia",
     annotations=[
         go.layout.Annotation(
