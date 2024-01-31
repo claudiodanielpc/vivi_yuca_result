@@ -432,7 +432,7 @@ st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size:
 
 
 
-fig = px.histogram(filtered_df, x="recámaras", nbins=20, color_discrete_sequence=['#fca311'])
+fig = px.histogram(filtered_df, x="recamaras", nbins=20, color_discrete_sequence=['#fca311'])
 fig.update_layout(
     title_text=f"Distribución de cuartos de {selected_colloc}",
     xaxis_title="Cuartos",
