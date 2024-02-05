@@ -366,7 +366,7 @@ fig.add_shape(
         x1=mean_price,
         y0=0,
         y1=1,
-        line=dict(color='red', width=2)
+        line=dict(color='red', width=4)
     )
 )
 
