@@ -360,7 +360,8 @@ fig.update_layout(
 
 )
 
-
+#Obtener valor máximo de y
+max_y=filtered_df["precio_millions"].value_counts().max()
 
 # Agregar la línea media dinámica
 fig.add_shape(
@@ -369,7 +370,7 @@ fig.add_shape(
         x0=mean_price,
         x1=mean_price,
         y0=0,
-        y1=3000,
+        y1=max_y,
         line=dict(color='red', width=4)
     )
 )
