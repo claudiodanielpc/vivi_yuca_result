@@ -357,7 +357,7 @@ fig.update_layout(
             )
         )
     ],
-    hovermode='x'
+
 )
 # Agregar la línea media dinámica
 fig.add_shape(
