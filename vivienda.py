@@ -356,7 +356,9 @@ fig.update_layout(
                 color='grey'
             )
         )
-    ]
+    ],
+    hovermode='x',
+    hoverinfo='x+y'
 )
 # Agregar la línea media dinámica
 fig.add_shape(
