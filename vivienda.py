@@ -337,6 +337,8 @@ else:
 
 filtered_df["precio_millions"] = filtered_df["precio"] / 1_000_000
 mean_price = filtered_df["precio_millions"].mean()
+#Obtener la máxima frecuencia
+max_y=filtered_df["precio_millions"].value_counts().max()
 # Crear el histograma
 fig = px.histogram(filtered_df, x="precio_millions", nbins=30, color_discrete_sequence=['#fca311'])
 fig.update_layout(
@@ -360,8 +362,6 @@ fig.update_layout(
 
 )
 
-#Obtener valor máximo de y
-max_y=filtered_df["precio_millions"].value_counts().max()
 
 # Agregar la línea media dinámica
 fig.add_shape(
