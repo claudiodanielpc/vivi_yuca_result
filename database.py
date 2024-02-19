@@ -22,3 +22,23 @@ def load_depas():
     df = pd.read_csv("https://raw.githubusercontent.com/claudiodanielpc/vivi_yuca_result/main/data/depasyuca_limpia.csv")
     return df
 
+
+
+##Tablas sucias
+
+@st.cache_data
+def load_data_sucia():
+    df=pd.read_csv("https://raw.githubusercontent.com/claudiodanielpc/vivi_yuca_result/main/data/viviyuca_sucia.csv")
+    return df
+
+
+@st.cache_data
+def load_terrenos_sucia():
+    df = pd.read_csv("https://raw.githubusercontent.com/claudiodanielpc/vivi_yuca_result/main/data/terrenosyuca_sucia.csv")
+    return df
+
+
+@st.cache_data
+def load_depas_sucia():
+    df = pd.read_csv("https://raw.githubusercontent.com/claudiodanielpc/vivi_yuca_result/main/data/depasyuca_sucia.csv")
+    return df
