@@ -18,11 +18,16 @@ st.set_page_config(page_title="Resultados departamentos en Mérida", page_icon="
 df = database.load_depas()
 df['colloc'] = df['colloc'].str.title()
 
+#Base sucia
+sucia=database.load_depas_sucia()
+
+
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 35px; text-align: center'>Portales inmobiliarios y oferta de departamentos en Mérida</p>", unsafe_allow_html=True)
 
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Algunos datos generales</p>", unsafe_allow_html=True)
 #Length of the dataframe
-st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>La base de datos cuenta con un total de <b>{:,}</b> registros de departamentos en venta en el municipio de Mérida, Yucatán.</p>".format(df.shape[0]), unsafe_allow_html=True)
+st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>Originalmente, la base de datos contaba con <b>{:,}</b> registros.</p>".format(sucia.shape[0]), unsafe_allow_html=True)
+st.markdown("<p style='font-family: Century Gothic;font-size: 15px; text-align: justified'>Después del proceso de limpieza, la base de datos quedó con <b>{:,}</b> registros de departamentos en venta en el municipio de Mérida, Yucatán.</p>".format(df.shape[0]), unsafe_allow_html=True)
 
 st.markdown("---")
 
