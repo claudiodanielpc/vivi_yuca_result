@@ -364,6 +364,8 @@ fig.update_layout(
     ],
 
 )
+max_estimate = filtered_df["precio_millions"].value_counts().max()
+fig.add_trace(go.Scatter(x=[mean_price, mean_price], y=[0, max_estimate], mode="lines", name="Mean Price", line=dict(color='red', width=4)))
 
 y1=max_y
 # Agregar la línea media dinámica
