@@ -339,9 +339,16 @@ else:
     filtered_df = colloc[colloc['colloc'] == selected_colloc]
 
 filtered_df["precio_millions"] = filtered_df["precio"] / 1_000_000
-mean_price = filtered_df["precio_millions"].mean()
-#Obtener la máxima frecuencia
-max_y=filtered_df["precio_millions"].value_counts().max() *100
+
+#Calcular la media de los precios
+if selected_colloc == 'Total':
+    mean_price = filtered_df['precio_millions'].mean()
+    max_y = filtered_df['precio_millions'].value_counts().max() *100
+else:
+    mean_price = filtered_df['precio_millions'].mean()
+    max_y = filtered_df['precio_millions'].value_counts().max()
+
+
 
 # Crear el histograma
 fig = px.histogram(filtered_df, x="precio_millions", nbins=30, color_discrete_sequence=['#fca311'])
