@@ -372,7 +372,7 @@ fig.update_layout(
     ],
 
 )
-fig.add_annotation(x=mean_price, y=max_y, text=f"Precio promedio: {mean_price:.2f} millones", showarrow=True, arrowhead=1, yshift=10)
+fig.add_annotation(x=mean_price, y=max_y, text=f"Precio promedio: {mean_price:.1f} millones", showarrow=True, arrowhead=1, yshift=10)
 
 
 

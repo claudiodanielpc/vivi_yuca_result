@@ -307,6 +307,7 @@ fig.update_layout(
         )
     ]
 )
+fig.add_annotation(x=mean_price, y=max_y, text=f"Precio promedio: {mean_price:.1f} millones", showarrow=True, arrowhead=1, yshift=10)
 
 # Agregar la línea media dinámica
 fig.add_shape(
