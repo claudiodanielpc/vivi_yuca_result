@@ -341,7 +341,7 @@ else:
 filtered_df["precio_millions"] = filtered_df["precio"] / 1_000_000
 mean_price = filtered_df["precio_millions"].mean()
 #Obtener la máxima frecuencia
-max_y=filtered_df["precio_millions"].value_counts().max() *5
+max_y=filtered_df["precio_millions"].value_counts().max() *100
 
 # Crear el histograma
 fig = px.histogram(filtered_df, x="precio_millions", nbins=30, color_discrete_sequence=['#fca311'])
