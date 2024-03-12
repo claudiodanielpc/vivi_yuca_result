@@ -346,7 +346,7 @@ if selected_colloc == 'Total':
     max_y = filtered_df['precio_millions'].value_counts().max() *100
 else:
     mean_price = filtered_df['precio_millions'].mean()
-    max_y = filtered_df['precio_millions'].value_counts().max()
+    max_y = filtered_df['precio_millions'].value_counts().max()*50
 
 
 
