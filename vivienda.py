@@ -365,7 +365,7 @@ fig.update_layout(
 
 )
 
-
+y1=max_y
 # Agregar la línea media dinámica
 fig.add_shape(
     go.layout.Shape(
@@ -373,7 +373,7 @@ fig.add_shape(
         x0=mean_price,
         x1=mean_price,
         y0=0,
-        y1=max_y,
+        y1=y1,
         line=dict(color='red', width=4)
     )
 )
