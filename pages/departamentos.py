@@ -276,6 +276,15 @@ else:
     filtered_df = colloc[colloc['colloc'] == selected_colloc]
 
 filtered_df["precio_millions"] = filtered_df["precio"] / 1_000_000
+#Calcular la media de los precios
+if selected_colloc == 'Total':
+    mean_price = filtered_df['precio_millions'].mean()
+    max_y = filtered_df['precio_millions'].value_counts().max() *100
+else:
+    mean_price = filtered_df['precio_millions'].mean()
+    max_y = filtered_df['precio_millions'].value_counts().max()*2.5
+
+
 
 # Crear el histograma
 fig = px.histogram(filtered_df, x="precio_millions", nbins=20, color_discrete_sequence=['#fca311'])
@@ -298,6 +307,20 @@ fig.update_layout(
         )
     ]
 )
+
+# Agregar la línea media dinámica
+fig.add_shape(
+    go.layout.Shape(
+        type='line',
+        x0=mean_price,
+        x1=mean_price,
+        y0=0,
+        y1=max_y,
+        line=dict(color='red', width=4)
+    )
+)
+
+
 
 # Mostrar el histograma en la aplicación Streamlit
 st.plotly_chart(fig)
