@@ -342,6 +342,7 @@ filtered_df["precio_millions"] = filtered_df["precio"] / 1_000_000
 mean_price = filtered_df["precio_millions"].mean()
 #Obtener la máxima frecuencia
 max_y=filtered_df["precio_millions"].value_counts().max() *1.5
+
 # Crear el histograma
 fig = px.histogram(filtered_df, x="precio_millions", nbins=30, color_discrete_sequence=['#fca311'])
 fig.update_layout(
@@ -364,10 +365,9 @@ fig.update_layout(
     ],
 
 )
-max_estimate = filtered_df["precio_millions"].value_counts().max()
-fig.add_trace(go.Scatter(x=[mean_price, mean_price], y=[0, max_estimate], mode="lines", name="Mean Price", line=dict(color='red', width=4)))
 
-y1=max_y
+
+
 # Agregar la línea media dinámica
 fig.add_shape(
     go.layout.Shape(
@@ -375,7 +375,7 @@ fig.add_shape(
         x0=mean_price,
         x1=mean_price,
         y0=0,
-        y1=y1,
+        y1=max_y,
         line=dict(color='red', width=4)
     )
 )
