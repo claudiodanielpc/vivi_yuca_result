@@ -335,8 +335,9 @@ st.plotly_chart(fig)
 st.markdown("<p style='font-family: Century Gothic; font-weight: bold;font-size: 20px; text-align: center'>Superficie de los terrenos</p>", unsafe_allow_html=True)
 
 
+superficie_df = filtered_df.dropna(subset=['superficie'])
 
-fig = px.histogram(filtered_df, x="superficie", nbins=20, color_discrete_sequence=['#fca311'])
+fig = px.histogram(superficie_df, x="superficie", nbins=20, color_discrete_sequence=['#fca311'])
 fig.update_layout(
     title_text=f"Distribución de los metros cuadrados de {selected_colloc}",
     xaxis_title="Metros cuadrados",
