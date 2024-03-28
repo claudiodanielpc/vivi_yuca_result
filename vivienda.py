@@ -285,7 +285,7 @@ fig.update_layout(
  # Ensures the highest value is at the top
  annotations=[
         go.layout.Annotation(
-            text='Nota: La información difiere del mapa debido a que no todos los registros cuentan con coordenadas geográficas.\n Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
+            text='Nota: La información difiere del mapa debido a que no todos los registros cuentan con coordenadas geográficas.',
             xref='paper',
             yref='paper',
             x=0,
@@ -296,10 +296,8 @@ fig.update_layout(
                 size=10,
                 color='grey'
             )
-        )
-    ],
-    annotations=[
-        go.layout.Annotation(
+        ),
+     go.layout.Annotation(
             text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
             xref='paper',
             yref='paper',
@@ -308,10 +306,10 @@ fig.update_layout(
             showarrow=False,
             font=dict(
                 family='Century Gothic',
-                size=12,
+                size=10,
                 color='grey'
             )
-        )]
+    ]
 )
 
 # Add percentage labels at the top of each bar
