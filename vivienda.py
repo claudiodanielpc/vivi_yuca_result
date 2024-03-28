@@ -244,6 +244,14 @@ st.sidebar.markdown(
     f"</div>",
     unsafe_allow_html=True)
 
+# Sidebar - Metros cúbicos
+st.sidebar.markdown(
+    f"<div style='text-align:center;font-family:montserrat;'>"
+    f"<img src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLAYpIaj7rQCoLt2KPd7DRjzp_dKSgKrTCkdfQ2Qj7oG2SFmYqwg-_NCImEWuPzlfXIRrZz5k65B3sXFb1h6ALoXnnV9khehzwdjlLdNXEIqn4ZdlgOw6oMdHg3aMrrrF491aJm8Roo0wL/s640/metros-cubicos.png' alt='Metro Cúbicos' width='70'/>"
+    f"<p><a href='https://www.mercadolibre.com.mx/l/metroscubicos'>Metros Cúbicos</a></p>"
+    f"</div>",
+    unsafe_allow_html=True)
+
 
 
 
