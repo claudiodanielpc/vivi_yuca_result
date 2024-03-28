@@ -308,7 +308,7 @@ fig.update_layout(
                 family='Century Gothic',
                 size=10,
                 color='grey'
-            )
+            ))
     ]
 )
 
