@@ -301,7 +301,7 @@ fig.update_layout(
             text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
             xref='paper',
             yref='paper',
-            x=0,
+            x=5,
             y=-0.3,
             showarrow=False,
             font=dict(
