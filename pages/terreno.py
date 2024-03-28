@@ -229,7 +229,7 @@ fig.update_layout(
             showarrow=False,
             font=dict(
                 family='Century Gothic',
-                size=12,
+                size=10,
                 color='grey'
             )
         )
