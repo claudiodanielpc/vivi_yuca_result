@@ -79,10 +79,17 @@ st.sidebar.markdown(
 st.sidebar.markdown(
     f"<div style='text-align:center;font-family:montserrat;'>"
     f"<img src='https://surveymonkey-assets.s3.amazonaws.com/survey/297849572/d1726151-bb64-4ee7-a3ab-429aaaf70a07.png' alt='Inmuebles24' width='70'/>"
-    f"<p><a href='https://www.inmuebles24.com/'>Inmuebles24</a></p>"
+    f"<p><a href='https://www.inmuebles24.com/'>Metros Cúbicos</a></p>"
     f"</div>",
     unsafe_allow_html=True)
 
+# Sidebar - Metros cúbicos
+st.sidebar.markdown(
+    f"<div style='text-align:center;font-family:montserrat;'>"
+    f"<img src='https://surveymonkey-assets.s3.amazonaws.com/survey/297849572/d1726151-bb64-4ee7-a3ab-429aaaf70a07.png' alt='Inmuebles24' width='70'/>"
+    f"<p><a href='https://www.inmuebles24.com/'>Inmuebles24</a></p>"
+    f"</div>",
+    unsafe_allow_html=True)
 
 def get_color(feature):
     gm_value = feature['properties']['gm_2020']
