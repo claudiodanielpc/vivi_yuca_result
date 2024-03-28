@@ -285,7 +285,7 @@ fig.update_layout(
  # Ensures the highest value is at the top
  annotations=[
         go.layout.Annotation(
-            text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
+            text='Nota: La información difiere del mapa debido a que no todos los registros cuentan con coordenadas geográficas.\n Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
             xref='paper',
             yref='paper',
             x=0,
