@@ -311,7 +311,7 @@ fig.update_layout(
                 size=12,
                 color='grey'
             )
-        )
+        )]
 )
 
 # Add percentage labels at the top of each bar
