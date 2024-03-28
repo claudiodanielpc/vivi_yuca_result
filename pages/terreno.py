@@ -302,7 +302,7 @@ fig.update_layout(
     yaxis_title="Frecuencia",
     annotations=[
         go.layout.Annotation(
-            text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
+            text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi, Metros Cúbicos y Easybroker',
             xref='paper',
             yref='paper',
             x=0,
@@ -351,7 +351,7 @@ fig.update_layout(
     yaxis_title="Frecuencia",
     annotations=[
         go.layout.Annotation(
-            text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi y Easybroker',
+            text='Fuente: Elaboración propia con datos de Goodlers, Inmuebles24, Lamudi, Metros Cúbicos y Easybroker',
             xref='paper',
             yref='paper',
             x=0,
